@@ -12,7 +12,7 @@ For use with Minecraft Spigot Server 1.16.5
   https://www.spigotmc.org/wiki/buildtools/ 
   
 5. Create an eclipse workspace and open the `HungerGames` root folder as an existing project. 
-  You need to configure the build path to use the built spigot.jar file as an external archive. 
+  You need to configure the build path to use the built `spigot.jar` file as an external archive. 
 
 # To Run The Server  
 Create a new directory for your server. Inside it, you must have a COPY of the built spigot.jar
