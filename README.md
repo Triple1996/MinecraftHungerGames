@@ -1,5 +1,3 @@
-This Minecraft Plugin is meant to simulate a "hunger games" gamemode wherein the world slowly collapses on a single chunk.
-
 For use with Minecraft Spigot Server 1.16.5
 
 # Install Instructions
