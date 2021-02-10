@@ -11,7 +11,7 @@ For use with Minecraft Spigot Server 1.16.5
 4. Install BuildTools and drun to build spigot.jar  
   https://www.spigotmc.org/wiki/buildtools/ 
   
-5. Create an eclipse workspace and open the `HungerGames` root folder as an existing project. 
+5. Create an eclipse workspace and open the `HungerGames` root folder as an existing project.    
    a) You need to configure the build path to use the built `spigot.jar` file as an external archive. 
 
 # To Run The Server  
@@ -20,7 +20,7 @@ Create a file start.sh to start your server with the command `java -Xms#G -Xmx#G
   ##Change the `#` to however much memory you wish to allocate to the server!
   
 Inside the server directory you must create another directory named `plugins`
-Now, inside Eclipse, right click on project 
+Now, inside Eclipse, right click on project
 > `export...` ensure JAR file is selected > `Next` > uncheck `.classpath` and `.project`  (Ensure `plugin.yml` is selected!!)
 > navigate to your server/plugins folder > `Finish`
     
