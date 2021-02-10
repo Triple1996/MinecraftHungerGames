@@ -8,7 +8,7 @@ For use with Minecraft Spigot Server 1.16.5
   https://www.spigotmc.org/wiki/spigot-installation/#linux  
 3. Install Eclipse (Or your favorite Java IDE)  
   https://www.eclipse.org/downloads/  
-4. Install BuildTools and drun to build spigot.jar  
+4. Install BuildTools and run to build spigot.jar  
   https://www.spigotmc.org/wiki/buildtools/ 
   
 5. Create an eclipse workspace and open the `HungerGames` root folder as an existing project.    
@@ -31,4 +31,4 @@ For use with Minecraft Spigot Server 1.16.5
 5. Start your server with `./start.sh`
     
 ##### To get started developing on Spigot. Check out the official Spigot API Docs: https://www.spigotmc.org/wiki/how-to-learn-the-spigot-api/
-##### If you prefer to get a more hands-on tutorial, check out Daemon Gaming TV's [youtube series](https://www.youtube.com/playlist?list=PLHUkvT20xZZN-cUIw4pkRg02uZ-RPEb7W)
+##### For a more hands-on tutorial, check out Daemon Gaming TV's youtube series: https://www.youtube.com/playlist?list=PLHUkvT20xZZN-cUIw4pkRg02uZ-RPEb7W
