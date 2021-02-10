@@ -14,7 +14,7 @@ For use with Minecraft Spigot Server 1.16.5
 5. Create an eclipse workspace and open the `HungerGames` root folder as an existing project. 
   You need to configure the build path to use the built spigot.jar file as an external archive. 
 
-##To Run The Server
+#To Run The Server
 Create a new directory for your server. Inside it, you must have a COPY of the built spigot.jar
 Create a file start.sh to start your server with the command `java -Xms#G -Xmx#G -XX:+UseG1GC -jar spigot.jar nogui`
   ##Change the `#` to however much memory you wish to allocate to the server!
