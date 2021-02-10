@@ -1,6 +1,6 @@
 For use with Minecraft Spigot Server 1.16.5
 
-# Install Instructions
+# Linux Install Instructions
 
 1. Install Minecraft 
   https://www.minecraft.net/en-us/download  
@@ -28,5 +28,5 @@ For use with Minecraft Spigot Server 1.16.5
     e) uncheck `.classpath` and `.project` (Ensure `plugin.yml` is selected!!)    
     f) navigate to your server/plugins folder    
     g) `Finish`    
-    
+5. Start your server with `./start.sh`
     
