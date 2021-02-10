@@ -30,4 +30,4 @@ For use with Minecraft Spigot Server 1.16.5
     g) `Finish`    
 5. Start your server with `./start.sh`
     
-## To get started developing on Spigot. Check out the official Spigot API Docs: https://www.spigotmc.org/wiki/how-to-learn-the-spigot-api/
+# To get started developing on Spigot. Check out the official Spigot API Docs: https://www.spigotmc.org/wiki/how-to-learn-the-spigot-api/
