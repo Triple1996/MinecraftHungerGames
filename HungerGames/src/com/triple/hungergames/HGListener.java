@@ -30,9 +30,9 @@ public class HGListener implements Listener{
     public void onPlayerDamage(PlayerMoveEvent event) {
         
         Location location = event.getPlayer().getLocation();
+        event.getPlayer().sendMessage("You are moving");
                 
         if ( (Math.abs( location.getX() ) > 16) || (Math.abs( location.getZ() ) > 16) ) {
-        	
         	Location spawn = new Location(Bukkit.getServer().getWorld("world"), 0, 62, 0);
         	event.getPlayer().teleport(spawn);
         	// TODO Remove hard-coded y=62. This code is for demonstration purposes only
