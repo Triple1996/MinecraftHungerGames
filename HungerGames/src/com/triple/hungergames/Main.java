@@ -12,7 +12,7 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
-		// test comment
+		
 		getLogger().info("HungerGames has been disabled.");
 	}
 }
