@@ -21,5 +21,5 @@ For use with Minecraft Spigot Server 1.16.5
 4. Export the project's `plugin.yml` as a .JAR file into this new directory
 5. Start your server with `./start.sh`
     
-##### To get started developing on Spigot. Check out the official Spigot API Docs: https://www.spigotmc.org/wiki/how-to-learn-the-spigot-api/
+##### To get started developing on Spigot. check out the official Spigot API Docs: https://www.spigotmc.org/wiki/how-to-learn-the-spigot-api/
 ##### For a more hands-on tutorial, check out Daemon Gaming TV's youtube series: https://www.youtube.com/playlist?list=PLHUkvT20xZZN-cUIw4pkRg02uZ-RPEb7W
