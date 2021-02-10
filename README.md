@@ -2,16 +2,14 @@ For use with Minecraft Spigot Server 1.16.5
 
 # Linux Install Instructions
 
-1. Install Minecraft 
+1. Install Minecraft   
   https://www.minecraft.net/en-us/download  
 2. Install Spigot Server  
   https://www.spigotmc.org/wiki/spigot-installation/#linux  
-3. Install Eclipse (Or your favorite Java IDE)  
-  https://www.eclipse.org/downloads/  
-4. Install BuildTools and run to build spigot.jar  
+3. Install BuildTools and run to build spigot.jar  
   https://www.spigotmc.org/wiki/buildtools/ 
   
-5. Create an eclipse workspace and open the `HungerGames` root folder as an existing project.    
+4. Create a new Java workspace and open the `HungerGames` root folder as an existing project.    
     a) You need to configure the build path to use the built `spigot.jar` file as an external archive. 
 
 # To Run The Server  
@@ -20,14 +18,7 @@ For use with Minecraft Spigot Server 1.16.5
     a) Change the `#` to however much memory you wish to allocate to the server!    
   
 3. Inside the server directory you must create another directory named `plugins`    
-4. Now, inside Eclipse:     
-    a) right click on project    
-    b) `export...`    
-    c) ensure JAR file is selected    
-    d) `Next`    
-    e) uncheck `.classpath` and `.project` (Ensure `plugin.yml` is selected!!)    
-    f) navigate to your server/plugins folder    
-    g) `Finish`    
+4. Export the project's `plugin.yml` as a .JAR file into this new directory
 5. Start your server with `./start.sh`
     
 ##### To get started developing on Spigot. Check out the official Spigot API Docs: https://www.spigotmc.org/wiki/how-to-learn-the-spigot-api/
