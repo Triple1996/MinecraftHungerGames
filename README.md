@@ -1,5 +1,5 @@
 For use with Minecraft Spigot Server 1.16.5 
-test comment
+
 # Spigot Development Setup
 
 1. Install Minecraft   
