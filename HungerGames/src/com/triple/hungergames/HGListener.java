@@ -27,13 +27,12 @@ public class HGListener implements Listener{
 
         player.sendMessage("Welcome to the server " + player.getName());
 
-    }    
+    }
 
     @EventHandler
     public void onPlayerDamage(PlayerMoveEvent event) {
 
         Location location = event.getPlayer().getLocation();
-        event.getPlayer().sendMessage("You are moving");
 
         if ( (Math.abs( location.getX() ) > 16) || (Math.abs( location.getZ() ) > 16) ) {
         	Location spawn = new Location(Bukkit.getServer().getWorld("world"), 0, 62, 0);
@@ -44,18 +43,16 @@ public class HGListener implements Listener{
     
     @EventHandler
     public void onLoad(ServerLoadEvent event) {
+
     	WorldBorder border = Bukkit.getServer().getWorld("world").getWorldBorder();
+    	ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
     	border.setCenter(0, 0);
     	border.setSize(100);
-    	
-    	ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-    	String command = "/spreadplayers 0 0 0 1 true @a";
-    	Bukkit.dispatchCommand(console, command);
+
+    	Bukkit.dispatchCommand(console, "spreadplayers 0 0 0 1 true @a");
+
     	
     }
-    
-    
-    
 }
 
 
