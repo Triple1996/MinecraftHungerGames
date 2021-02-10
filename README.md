@@ -16,8 +16,8 @@ For use with Minecraft Spigot Server 1.16.5
 
 # To Run The Server  
 1. Create a new directory for your server. Inside it, you must have a COPY of the built `spigot.jar`    
-Create a file `start.sh` to start your server with the command `java -Xms#G -Xmx#G -XX:+UseG1GC -jar spigot.jar nogui`    
-    a) Change the `#` to however much memory you wish to allocate to the server!
+2. Create a file `start.sh` to start your server with the command `java -Xms#G -Xmx#G -XX:+UseG1GC -jar spigot.jar nogui`    
+    a) Change the `#` to however much memory you wish to allocate to the server!    
   
 Inside the server directory you must create another directory named `plugins`    
 Now, inside Eclipse:     
