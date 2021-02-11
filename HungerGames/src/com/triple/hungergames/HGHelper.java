@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.command.ConsoleCommandSender;
 
 public class HGHelper {
 
@@ -22,6 +23,10 @@ public class HGHelper {
 		}
 
 		return (int) y.add(0,1,0).getY();
+	}
+	
+	public void tellConsole(ConsoleCommandSender console, String message){
+	    console.sendMessage(message);
 	}
 
 }
