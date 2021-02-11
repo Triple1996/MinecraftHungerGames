@@ -37,7 +37,6 @@ public class HGListener implements Listener{
         if ( (Math.abs( location.getX() ) > 16) || (Math.abs( location.getZ() ) > 16) ) {
         	Location spawn = new Location(Bukkit.getWorld("world"), 0, hgh.getYValOfSurface(0,0), 0);
         	event.getPlayer().teleport(spawn);
-        	event.getPlayer().sendMessage(spawn.toString());
         }
     }
     
