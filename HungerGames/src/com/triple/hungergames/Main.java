@@ -10,7 +10,7 @@ public class Main extends JavaPlugin{
 
     @Override
     public void onEnable() {
-        getLogger().info("UHC has been enabled.");
+        getLogger().info("HungerGames has been enabled.");
         PluginManager pm = getServer().getPluginManager();
         HGListener listener = new HGListener(this);
         pm.registerEvents(listener, this);
@@ -18,7 +18,7 @@ public class Main extends JavaPlugin{
 
     @Override
     public void onDisable() {
-        getLogger().info("UHC has been disabled.");
+        getLogger().info("HungerGames has been disabled.");
     }    
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
