@@ -1,13 +1,9 @@
 package com.triple.hungergames;
 
-import java.lang.Math;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.WorldBorder;
-import org.bukkit.block.Block;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,9 +27,7 @@ public class HGListener implements Listener{
     public HGListener(Main plugin) {
 
     }
-    
-    
-    
+
     @EventHandler
     public void OnPlayerJoin(PlayerJoinEvent event) {
 
@@ -60,8 +54,8 @@ public class HGListener implements Listener{
     	border.setSize(150);
     	border.setWarningDistance(0);
     	Bukkit.dispatchCommand(console, "spreadplayers 0 0 0 1 true @a");
-
-    	
+    	hgh.initSpawnArea();
+    	hgh.tellConsole(console, "initialized spawn area");
     }
     
     @EventHandler
@@ -76,13 +70,6 @@ public class HGListener implements Listener{
     	border.setWarningDistance(0);
     	hgh.tellConsole(console, "initialized world border");
     	
-    	
-    	Block pillarOrigin = new Location(world, 0,3,0).getBlock();
-    	for (int i = 3; i < MAX_BUILD_HEIGHT; i++) {
-    		if (!(pillarOrigin.getType().equals(Material.AIR))) {
-    			pillarOrigin.setType(Material.GLASS);
-    		}
-    	}
     }
 }
 
