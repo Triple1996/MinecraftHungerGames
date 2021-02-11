@@ -30,7 +30,7 @@ public class HGListener implements Listener{
     }
 
     @EventHandler
-    public void onPlayerDamage(PlayerMoveEvent event) {
+    public void onPlayerMove(PlayerMoveEvent event) {
 
         Location location = event.getPlayer().getLocation();
         HGHelper hgh = new HGHelper();
