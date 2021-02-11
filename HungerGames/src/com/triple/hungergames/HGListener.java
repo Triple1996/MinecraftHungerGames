@@ -33,21 +33,21 @@ public class HGListener implements Listener{
     public void onPlayerDamage(PlayerMoveEvent event) {
 
         Location location = event.getPlayer().getLocation();
-
+        HGHelper hgh = new HGHelper();
         if ( (Math.abs( location.getX() ) > 16) || (Math.abs( location.getZ() ) > 16) ) {
-        	Location spawn = new Location(Bukkit.getServer().getWorld("world"), 0, 62, 0);
+        	Location spawn = new Location(Bukkit.getWorld("world"), 0, hgh.getYValOfSurface(0,0), 0);
         	event.getPlayer().teleport(spawn);
-        	// TODO Remove hard-coded y=62. This code is for demonstration purposes only
+        	event.getPlayer().sendMessage(spawn.toString());
         }
     }
     
     @EventHandler
     public void onLoad(ServerLoadEvent event) {
 
-    	WorldBorder border = Bukkit.getServer().getWorld("world").getWorldBorder();
+    	WorldBorder border = Bukkit.getWorld("world").getWorldBorder();
     	ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
     	border.setCenter(0, 0);
-    	border.setSize(100);
+    	border.setSize(150);
 
     	Bukkit.dispatchCommand(console, "spreadplayers 0 0 0 1 true @a");
 
