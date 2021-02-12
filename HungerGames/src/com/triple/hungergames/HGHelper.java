@@ -7,10 +7,14 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.RenderType;
 import org.bukkit.scoreboard.Scoreboard;
 
 public class HGHelper {
 	final static int MAX_BUILD_HEIGHT = 256;
+	private static boolean teamsInit = false;
+	private boolean scoreBoardInit = false;
 	private World world = Bukkit.getWorld("world");
 
 
@@ -44,16 +48,36 @@ public class HGHelper {
     	}
 	}
 
-	public void initteams(Scoreboard scoreboard) {
-		String[] teams = {"Red", "Blue", "Cyan", "Purple", "Green", "White",
-		                  	"Orange", "Lime", "Black", "Pink"};
-		ChatColor[] colors = {ChatColor.DARK_RED, ChatColor.BLUE, ChatColor.AQUA,
-								ChatColor.DARK_PURPLE, ChatColor.DARK_GREEN, 
-								ChatColor.WHITE, ChatColor.GOLD, ChatColor.GREEN,
-								ChatColor.DARK_GRAY, ChatColor.LIGHT_PURPLE};
-		for (int i = 0; i < teams.length; i++) {
-			scoreboard.registerNewTeam(teams[i]);
-			scoreboard.getTeam(teams[i]).setColor(colors[i]);
+	public void initScoreBoard(Scoreboard scoreboard) {
+		
+		if (scoreBoardInit) {
+			return;
+		}
+		else {
+			Bukkit.getServer().getPlayer("Triple96").sendMessage("init scoreboard");
+			scoreboard.registerNewObjective("kills", "playerKillCount", "Kills", RenderType.INTEGER);
+	        scoreboard.getObjective("kills").setDisplaySlot(DisplaySlot.SIDEBAR);
+	        scoreBoardInit = true;	// TODO This doesn't work
+		}
+	}
+	
+	public void initTeams(Scoreboard scoreboard) {
+		
+		if (teamsInit) {
+			return;
+		}
+		else {
+			String[] teams = {"Red", "Blue", "Cyan", "Purple", "Green", "White",
+			                  	"Orange", "Lime", "Black", "Pink"};
+			ChatColor[] colors = {ChatColor.DARK_RED, ChatColor.BLUE, ChatColor.AQUA,
+									ChatColor.DARK_PURPLE, ChatColor.DARK_GREEN, 
+									ChatColor.WHITE, ChatColor.GOLD, ChatColor.GREEN,
+									ChatColor.DARK_GRAY, ChatColor.LIGHT_PURPLE};
+			for (int i = 0; i < teams.length; i++) {
+				scoreboard.registerNewTeam(teams[i]);
+				scoreboard.getTeam(teams[i]).setColor(colors[i]);
+			}
+			teamsInit = true;	// TODO This doesn't work
 		}
 	}
 	
