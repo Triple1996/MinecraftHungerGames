@@ -7,7 +7,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin{
-
+	// comment
     @Override
     public void onEnable() {
         getLogger().info("HungerGames has been enabled.");
