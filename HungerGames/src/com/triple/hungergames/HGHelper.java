@@ -1,11 +1,13 @@
 package com.triple.hungergames;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.scoreboard.Scoreboard;
 
 public class HGHelper {
 	final static int MAX_BUILD_HEIGHT = 256;
@@ -42,6 +44,19 @@ public class HGHelper {
     	}
 	}
 
+	public void initteams(Scoreboard scoreboard) {
+		String[] teams = {"Red", "Blue", "Cyan", "Purple", "Green", "White",
+		                  	"Orange", "Lime", "Black", "Pink"};
+		ChatColor[] colors = {ChatColor.DARK_RED, ChatColor.BLUE, ChatColor.AQUA,
+								ChatColor.DARK_PURPLE, ChatColor.DARK_GREEN, 
+								ChatColor.WHITE, ChatColor.GOLD, ChatColor.GREEN,
+								ChatColor.DARK_GRAY, ChatColor.LIGHT_PURPLE};
+		for (int i = 0; i < teams.length; i++) {
+			scoreboard.registerNewTeam(teams[i]);
+			scoreboard.getTeam(teams[i]).setColor(colors[i]);
+		}
+	}
+	
 	public int getYValOfSurface(int x, int z) {
 		World world = Bukkit.getWorld("world");
 		Location y = new Location(world, x, 0, z);
