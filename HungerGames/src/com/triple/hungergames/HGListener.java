@@ -1,5 +1,7 @@
 package com.triple.hungergames;
 
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -32,7 +34,8 @@ public class HGListener implements Listener{
     public void OnPlayerJoin(PlayerJoinEvent event) {
 
         Player player = (Player) event.getPlayer();
-        player.sendMessage("Welcome to the server " + player.getName());
+        player.sendMessage("Welcome to Minecraft Hunger Games!");
+        
         // TODO Initialize player's death count and kills to 0
 
     }
@@ -56,6 +59,12 @@ public class HGListener implements Listener{
     	Bukkit.dispatchCommand(console, "spreadplayers 0 0 0 1 true @a");
     	hgh.initSpawnArea();
     	hgh.tellConsole(console, "initialized spawn area");
+    	List<Player> players = Bukkit.getServer().getWorld("world").getPlayers();
+    	for (int i = 0; i < players.size(); i++) {
+    		Player player = players.get(i);
+    		player.sendMessage("Welcome to Minecraft Hunger Games!");
+    	}
+    	
     }
     
     @EventHandler
