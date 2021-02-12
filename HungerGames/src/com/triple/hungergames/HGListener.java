@@ -40,8 +40,8 @@ public class HGListener implements Listener{
         Player player = (Player) event.getPlayer();
         player.sendMessage("Welcome to Minecraft Hunger Games!");
         
-        //scoreboard.getObjective("Kills").getScore(player).setScore(0); // This is deprecated. Also it doesn't work
         // TODO Initialize player's death count and kills to 0
+        //scoreboard.getObjective("Kills").getScore(player).setScore(0); // This is deprecated. Also it doesn't work
 
     }
 
@@ -73,15 +73,13 @@ public class HGListener implements Listener{
     	// TODO Check if these (objs/teams) already exist so they don't throw errors every /reload
     	scoreboard.registerNewObjective("kills", "playerKillCount", "Kills", RenderType.INTEGER);
         scoreboard.getObjective("kills").setDisplaySlot(DisplaySlot.SIDEBAR);
-        // TODO make all teams and put this in a function
-        scoreboard.registerNewTeam("Red");
-        scoreboard.getTeam("Red").setColor(ChatColor.RED);
+        hgh.initteams(scoreboard);
     }
     
     @EventHandler
     public void onWorldInit(WorldInitEvent event) {
-    	// TODO initteams, initdeathcount,
-    	
+    	// TODO initdeathcount,
+
     	border.setCenter(0, 0);
     	world.setSpawnLocation(0, hgh.getYValOfSurface(0, 0), 0);
     	border.setCenter(0, 0);
