@@ -61,8 +61,7 @@ public class HGListener implements Listener{
     @EventHandler
     public void onWorldInit(WorldInitEvent event) {
     	// TODO initteams, initscoreboard, initdeathcount, initspawnplatform
-    	// TODO make sure this actually only loads once when the world is first genned
-    	
+
     	border.setCenter(0, 0);
     	world.setSpawnLocation(0, (int)world.getSpawnLocation().getY(), 0);
     	border.setCenter(0, 0);
