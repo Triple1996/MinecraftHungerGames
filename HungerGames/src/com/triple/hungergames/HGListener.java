@@ -3,7 +3,6 @@ package com.triple.hungergames;
 import java.util.List;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.WorldBorder;
@@ -15,8 +14,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.server.ServerLoadEvent;
 import org.bukkit.event.world.WorldInitEvent;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.RenderType;
 import org.bukkit.scoreboard.Scoreboard;
 
 
@@ -42,7 +39,8 @@ public class HGListener implements Listener{
         
         // TODO Initialize player's death count and kills to 0
         //scoreboard.getObjective("Kills").getScore(player).setScore(0); // This is deprecated. Also it doesn't work
-
+        //scoreboard.getObjective("Kills").getScore("kills").setScore(0); 
+        //scoreboard.getObjective("Kills").getScore(player.getName()).setScore(0); 
     }
 
     @EventHandler
@@ -70,10 +68,9 @@ public class HGListener implements Listener{
     		player.sendMessage("Welcome to Minecraft Hunger Games!");
     	}
     	
-    	// TODO Check if these (objs/teams) already exist so they don't throw errors every /reload
-    	scoreboard.registerNewObjective("kills", "playerKillCount", "Kills", RenderType.INTEGER);
-        scoreboard.getObjective("kills").setDisplaySlot(DisplaySlot.SIDEBAR);
-        hgh.initteams(scoreboard);
+    	// TODO See each method for details
+    	//hgh.initScoreBoard(scoreboard);
+        //hgh.initTeams(scoreboard);
     }
     
     @EventHandler
