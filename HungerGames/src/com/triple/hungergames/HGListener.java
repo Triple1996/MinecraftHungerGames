@@ -63,7 +63,7 @@ public class HGListener implements Listener{
     	// TODO initteams, initscoreboard, initdeathcount, initspawnplatform
 
     	border.setCenter(0, 0);
-    	world.setSpawnLocation(0, (int)world.getSpawnLocation().getY(), 0);
+    	world.setSpawnLocation(0, hgh.getYValOfSurface(0, 0), 0);
     	border.setCenter(0, 0);
     	border.setSize(150);
     	border.setWarningDistance(0);
