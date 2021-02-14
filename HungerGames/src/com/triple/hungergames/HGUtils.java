@@ -13,8 +13,6 @@ import org.bukkit.scoreboard.Scoreboard;
 
 public class HGUtils {
 	final static int MAX_BUILD_HEIGHT = 256;
-	private static boolean teamsInit = false;
-	private boolean scoreBoardInit = false;
 	private World world = Bukkit.getWorld("world");
 
 
@@ -49,35 +47,23 @@ public class HGUtils {
 	}
 
 	public void initScoreBoard(Scoreboard scoreboard) {
-		
-		if (scoreBoardInit) {
-			return;
-		}
-		else {
-			Bukkit.getServer().getPlayer("Triple96").sendMessage("init scoreboard");
-			scoreboard.registerNewObjective("kills", "playerKillCount", "Kills", RenderType.INTEGER);
-	        scoreboard.getObjective("kills").setDisplaySlot(DisplaySlot.SIDEBAR);
-	        scoreBoardInit = true;	// TODO This doesn't work
-		}
+
+		scoreboard.registerNewObjective("kills", "playerKillCount", "Kills", RenderType.INTEGER);
+	    scoreboard.getObjective("kills").setDisplaySlot(DisplaySlot.SIDEBAR);
+
 	}
 	
 	public void initTeams(Scoreboard scoreboard) {
 		
-		if (teamsInit) {
-			return;
-		}
-		else {
-			String[] teams = {"Red", "Blue", "Cyan", "Purple", "Green", "White",
-			                  	"Orange", "Lime", "Black", "Pink"};
-			ChatColor[] colors = {ChatColor.DARK_RED, ChatColor.BLUE, ChatColor.AQUA,
-									ChatColor.DARK_PURPLE, ChatColor.DARK_GREEN, 
-									ChatColor.WHITE, ChatColor.GOLD, ChatColor.GREEN,
-									ChatColor.DARK_GRAY, ChatColor.LIGHT_PURPLE};
-			for (int i = 0; i < teams.length; i++) {
-				scoreboard.registerNewTeam(teams[i]);
-				scoreboard.getTeam(teams[i]).setColor(colors[i]);
-			}
-			teamsInit = true;	// TODO This doesn't work
+		String[] teams = {"Red", "Blue", "Cyan", "Purple", "Green", "White",
+		                  	"Orange", "Lime", "Black", "Pink"};
+		ChatColor[] colors = {ChatColor.DARK_RED, ChatColor.BLUE, ChatColor.AQUA,
+								ChatColor.DARK_PURPLE, ChatColor.DARK_GREEN, 
+								ChatColor.WHITE, ChatColor.GOLD, ChatColor.GREEN,
+								ChatColor.DARK_GRAY, ChatColor.LIGHT_PURPLE};
+		for (int i = 0; i < teams.length; i++) {
+			scoreboard.registerNewTeam(teams[i]);
+			scoreboard.getTeam(teams[i]).setColor(colors[i]);
 		}
 	}
 	
