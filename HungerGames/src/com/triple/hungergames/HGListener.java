@@ -25,7 +25,8 @@ public class HGListener implements Listener{
 	private WorldBorder border = world.getWorldBorder();
 	private Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
 	final static int MAX_BUILD_HEIGHT = 256;
-	
+	public static boolean teamsInit = false;
+	public boolean scoreBoardInit = false;
     // Constructor
     public HGListener(Main plugin) {
 
@@ -69,8 +70,16 @@ public class HGListener implements Listener{
     	}
     	
     	// TODO See each method for details
-    	//hgu.initScoreBoard(scoreboard);
-        //hgu.initTeams(scoreboard);
+    	if (!teamsInit) {
+    		hgu.initTeams(scoreboard);
+    		hgu.tellConsole(console, "initialized teams");
+    		teamsInit = true;
+    	}
+    	if (!scoreBoardInit) {
+    		hgu.initScoreBoard(scoreboard);
+    		hgu.tellConsole(console, "initialized scoreboard");
+    		scoreBoardInit = true;
+    	}
     }
     
     @EventHandler
