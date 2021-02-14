@@ -69,7 +69,7 @@ public class HGListener implements Listener{
     		player.sendMessage("Welcome to Minecraft Hunger Games!");
     	}
     	
-    	// TODO See each method for details
+    	// TODO these shouldn't run more than once but they do
     	if (!teamsInit) {
     		hgu.initTeams(scoreboard);
     		hgu.tellConsole(console, "initialized teams");
