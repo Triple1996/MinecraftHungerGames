@@ -19,7 +19,7 @@ import org.bukkit.scoreboard.Scoreboard;
 
 public class HGListener implements Listener{
 
-	private HGHelper hgh = new HGHelper();
+	private HGUtils hgu = new HGUtils();
 	private ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
 	private World world = Bukkit.getWorld("world");
 	private WorldBorder border = world.getWorldBorder();
@@ -48,7 +48,7 @@ public class HGListener implements Listener{
 
         Location location = event.getPlayer().getLocation();
         if ( (Math.abs( location.getX() ) > 16) || (Math.abs( location.getZ() ) > 16) ) {
-        	Location spawn = new Location(Bukkit.getWorld("world"), 0, hgh.getYValOfSurface(0,0), 0);
+        	Location spawn = new Location(Bukkit.getWorld("world"), 0, hgu.getYValOfSurface(0,0), 0);
         	event.getPlayer().teleport(spawn);
         }
     }
@@ -60,8 +60,8 @@ public class HGListener implements Listener{
     	border.setSize(150);
     	border.setWarningDistance(0);
     	Bukkit.dispatchCommand(console, "spreadplayers 0 0 0 1 true @a");
-    	hgh.initSpawnArea();
-    	hgh.tellConsole(console, "initialized spawn area");
+    	hgu.initSpawnArea();
+    	hgu.tellConsole(console, "initialized spawn area");
     	List<Player> players = Bukkit.getServer().getWorld("world").getPlayers();
     	for (int i = 0; i < players.size(); i++) {
     		Player player = players.get(i);
@@ -69,8 +69,8 @@ public class HGListener implements Listener{
     	}
     	
     	// TODO See each method for details
-    	//hgh.initScoreBoard(scoreboard);
-        //hgh.initTeams(scoreboard);
+    	//hgu.initScoreBoard(scoreboard);
+        //hgu.initTeams(scoreboard);
     }
     
     @EventHandler
@@ -78,11 +78,11 @@ public class HGListener implements Listener{
     	// TODO initdeathcount,
 
     	border.setCenter(0, 0);
-    	world.setSpawnLocation(0, hgh.getYValOfSurface(0, 0), 0);
+    	world.setSpawnLocation(0, hgu.getYValOfSurface(0, 0), 0);
     	border.setCenter(0, 0);
     	border.setSize(150);
     	border.setWarningDistance(0);
-    	hgh.tellConsole(console, "initialized world border");
+    	hgu.tellConsole(console, "initialized world border");
     	
     	
     	
