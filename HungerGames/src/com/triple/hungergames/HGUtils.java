@@ -11,7 +11,7 @@ import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.RenderType;
 import org.bukkit.scoreboard.Scoreboard;
 
-public class HGHelper {
+public class HGUtils {
 	final static int MAX_BUILD_HEIGHT = 256;
 	private static boolean teamsInit = false;
 	private boolean scoreBoardInit = false;
