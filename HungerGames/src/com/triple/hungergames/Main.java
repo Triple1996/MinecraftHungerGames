@@ -10,6 +10,9 @@ public class Main extends JavaPlugin{
 	
     @Override
     public void onEnable() {
+    	this.getConfig().addDefault("teamsInit", false);
+    	this.getConfig().addDefault("scoreBoardInit", false);
+    	
         getLogger().info("HungerGames has been enabled.");
         PluginManager pm = getServer().getPluginManager();
         HGListener listener = new HGListener(this);
