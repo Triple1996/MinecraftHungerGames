@@ -14,6 +14,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.server.ServerLoadEvent;
 import org.bukkit.event.world.WorldInitEvent;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.Scoreboard;
 
 
@@ -27,9 +28,10 @@ public class HGListener implements Listener{
 	final static int MAX_BUILD_HEIGHT = 256;
 	public static boolean teamsInit = false;
 	public boolean scoreBoardInit = false;
+	Plugin plugin;
     // Constructor
     public HGListener(Main plugin) {
-
+    	this.plugin = plugin;
     }
 
     @EventHandler
@@ -69,16 +71,20 @@ public class HGListener implements Listener{
     		player.sendMessage("Welcome to Minecraft Hunger Games!");
     	}
     	
-    	// TODO See each method for details
-    	if (!teamsInit) {
+    	// TODO Reset values to false when world is remade
+    	if (!plugin.getConfig().getBoolean("teamsInit")){
     		hgu.initTeams(scoreboard);
     		hgu.tellConsole(console, "initialized teams");
-    		teamsInit = true;
+    		plugin.getConfig().set("teamsInit", true);
+    		plugin.getConfig().options().copyDefaults(true);
+            plugin.saveConfig();
     	}
-    	if (!scoreBoardInit) {
+    	if (!plugin.getConfig().getBoolean("scoreBoardInit")) {
     		hgu.initScoreBoard(scoreboard);
     		hgu.tellConsole(console, "initialized scoreboard");
-    		scoreBoardInit = true;
+    		plugin.getConfig().set("scoreBoardInit", true);
+    		plugin.getConfig().options().copyDefaults(true);
+            plugin.saveConfig();
     	}
     }
     
