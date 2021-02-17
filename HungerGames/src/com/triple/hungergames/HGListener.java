@@ -71,21 +71,20 @@ public class HGListener implements Listener{
     		player.sendMessage("Welcome to Minecraft Hunger Games!");
     	}
     	
-
     	// TODO Reset values to false when world is remade
     	if (!plugin.getConfig().getBoolean("teamsInit")){
     		hgu.initTeams(scoreboard);
     		hgu.tellConsole(console, "initialized teams");
     		plugin.getConfig().set("teamsInit", true);
     		plugin.getConfig().options().copyDefaults(true);
-            plugin.saveConfig();
+    		plugin.saveConfig();
     	}
     	if (!plugin.getConfig().getBoolean("scoreBoardInit")) {
     		hgu.initScoreBoard(scoreboard);
     		hgu.tellConsole(console, "initialized scoreboard");
     		plugin.getConfig().set("scoreBoardInit", true);
     		plugin.getConfig().options().copyDefaults(true);
-            plugin.saveConfig();
+    		plugin.saveConfig();
     	}
     }
     
