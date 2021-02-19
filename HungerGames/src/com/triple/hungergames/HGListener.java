@@ -39,11 +39,8 @@ public class HGListener implements Listener{
 
         Player player = (Player) event.getPlayer();
         player.sendMessage("Welcome to Minecraft Hunger Games!");
-        
-        // TODO Initialize player's death count and kills to 0
-        //scoreboard.getObjective("Kills").getScore(player).setScore(0); // This is deprecated. Also it doesn't work
         scoreboard.getObjective("kills").getScore(player.getName()).setScore(0); 
-        //scoreboard.getObjective("Kills").getScore(player.getName()).setScore(0); 
+
     }
 
     @EventHandler
