@@ -73,23 +73,17 @@ public class HGListener implements Listener{
     	if (!plugin.getConfig().getBoolean("teamsInit")){
     		hgu.initTeams(scoreboard);
     		hgu.tellConsole(console, "initialized teams");
-    		plugin.getConfig().set("teamsInit", true);
-    		plugin.getConfig().options().copyDefaults(true);
-    		plugin.saveConfig();
+    		hgu.setTrueAndSaveConfig(plugin, "teamsInit");
     	}
     	if (!plugin.getConfig().getBoolean("scoreBoardInit")) {
     		hgu.initScoreBoard(scoreboard);
     		hgu.tellConsole(console, "initialized scoreboard");
-    		plugin.getConfig().set("scoreBoardInit", true);
-    		plugin.getConfig().options().copyDefaults(true);
-    		plugin.saveConfig();
+    		hgu.setTrueAndSaveConfig(plugin, "scoreBoardInit");
     	}
     	if (!plugin.getConfig().getBoolean("deathCountInit")) {
     		hgu.initDeathCount(scoreboard);
     		hgu.tellConsole(console, "initialized deathcount");
-    		plugin.getConfig().set("deathCountInit", true);
-    		plugin.getConfig().options().copyDefaults(true);
-    		plugin.saveConfig();
+    		hgu.setTrueAndSaveConfig(plugin, "deathCountInit");
     	}
     }
     
