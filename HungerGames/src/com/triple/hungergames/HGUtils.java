@@ -1,5 +1,6 @@
 package com.triple.hungergames;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -7,6 +8,7 @@ import org.bukkit.World;
 import org.bukkit.WorldBorder;
 import org.bukkit.block.Block;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.RenderType;
@@ -14,6 +16,18 @@ import org.bukkit.scoreboard.Scoreboard;
 
 public class HGUtils {
 	final static int MAX_BUILD_HEIGHT = 256;
+	
+	public void welcomePlayer(ConsoleCommandSender console, Player player) {
+		String msg = " {\"text\":\"Welcome to Minecraft Hunger Games!\",\"color\":\"yellow\"}";
+		Bukkit.dispatchCommand(console, "tellraw " + player.getName() + msg);
+		
+		msg = " {\"text\":\"Your objective is simply to eliminate the other teams.\",\"color\":\"yellow\"}";
+		Bukkit.dispatchCommand(console, "tellraw " + player.getName() + msg);
+		
+		msg = " {\"text\":\"Please be patient while the game is about to begin.\",\"color\":\"yellow\"}";
+		Bukkit.dispatchCommand(console, "tellraw " + player.getName() + msg);
+		
+	}
 
 	public void initSpawnArea(ConsoleCommandSender console, World world) {
 
