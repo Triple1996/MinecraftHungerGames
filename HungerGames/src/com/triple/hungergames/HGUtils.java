@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.WorldBorder;
 import org.bukkit.block.Block;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.Plugin;
@@ -75,6 +76,11 @@ public class HGUtils {
 		}
 	}
 	
+	public void initWorldBorder(WorldBorder border) {
+		border.setCenter(0, 0);
+    	border.setSize(150);
+    	border.setWarningDistance(0);
+	}
 	public int getYValOfSurface(int x, int z) {
 		World world = Bukkit.getWorld("world");
 		Location y = new Location(world, x, 0, z);
