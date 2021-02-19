@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.RenderType;
 import org.bukkit.scoreboard.Scoreboard;
@@ -96,4 +97,10 @@ public class HGUtils {
 	    console.sendMessage(message);
 	}
 
+	public void setTrueAndSaveConfig(Plugin plugin, String var) {
+		plugin.getConfig().set(var, true);
+		plugin.getConfig().options().copyDefaults(true);
+		plugin.saveConfig();
+	}
+	
 }
