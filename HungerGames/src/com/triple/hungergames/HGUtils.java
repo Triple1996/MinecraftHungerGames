@@ -15,8 +15,7 @@ import org.bukkit.scoreboard.RenderType;
 import org.bukkit.scoreboard.Scoreboard;
 
 public class HGUtils {
-	final static int MAX_BUILD_HEIGHT = 256;
-	
+		
 	public void welcomePlayer(ConsoleCommandSender console, Player player) {
 		String msg = " {\"text\":\"Welcome to Minecraft Hunger Games!\",\"color\":\"yellow\"}";
 		Bukkit.dispatchCommand(console, "tellraw " + player.getName() + msg);
@@ -51,7 +50,7 @@ public class HGUtils {
 		beacon.setType(Material.BEACON);
 
 		Block pillarOrigin = new Location(world, 0,3,0).getBlock();
-    	for (int i = 3; i < MAX_BUILD_HEIGHT; i++) {
+    	for (int i = 3; i < Main.MAX_BUILD_HEIGHT; i++) {
     		if (!(pillarOrigin.getType().equals(Material.AIR))) {
     			pillarOrigin.setType(Material.GLASS);
     		}
