@@ -12,6 +12,7 @@ public class Main extends JavaPlugin{
     public void onEnable() {
     	this.getConfig().addDefault("teamsInit", false);
     	this.getConfig().addDefault("scoreBoardInit", false);
+    	this.getConfig().addDefault("deathCountInit", false);
     	
         getLogger().info("HungerGames has been enabled.");
         PluginManager pm = getServer().getPluginManager();
