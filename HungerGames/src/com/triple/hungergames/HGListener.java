@@ -29,6 +29,7 @@ public class HGListener implements Listener{
 	public static boolean teamsInit = false;
 	public boolean scoreBoardInit = false;
 	Plugin plugin;
+	
     // Constructor
     public HGListener(Main plugin) {
     	this.plugin = plugin;
@@ -38,7 +39,7 @@ public class HGListener implements Listener{
     public void OnPlayerJoin(PlayerJoinEvent event) {
 
         Player player = (Player) event.getPlayer();
-        player.sendMessage("Welcome to Minecraft Hunger Games!");
+        hgu.welcomePlayer(console, player);;
         scoreboard.getObjective("kills").getScore(player.getName()).setScore(0); 
         scoreboard.getObjective("deaths").getScore(player.getName()).setScore(0); 
 
@@ -47,8 +48,8 @@ public class HGListener implements Listener{
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
 
-        Location location = event.getPlayer().getLocation();
-        if ( (Math.abs( location.getX() ) > 16) || (Math.abs( location.getZ() ) > 16) ) {
+        Location playerLoc = event.getPlayer().getLocation();
+        if ( (Math.abs( playerLoc.getX() ) > 16) || (Math.abs( playerLoc.getZ() ) > 16) ) {
         	Location spawn = new Location(Bukkit.getWorld("world"), 0, hgu.getYValOfSurface(world, 0,0), 0);
         	event.getPlayer().teleport(spawn);
         }
@@ -76,10 +77,12 @@ public class HGListener implements Listener{
     	}
     	
     	Bukkit.dispatchCommand(console, "spreadplayers 0 0 0 1 true @a");
+    	
+    	Player player;
     	List<Player> players = Bukkit.getServer().getWorld("world").getPlayers();
     	for (int i = 0; i < players.size(); i++) {
-    		Player player = players.get(i);
-    		player.sendMessage("Welcome to Minecraft Hunger Games!");
+    		player = players.get(i);
+    		hgu.welcomePlayer(console, player);
     	}
     	
     }
