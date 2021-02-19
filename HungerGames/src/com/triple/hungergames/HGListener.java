@@ -2,6 +2,7 @@ package com.triple.hungergames;
 
 import java.util.List;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.WorldBorder;
@@ -9,6 +10,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.server.ServerLoadEvent;
@@ -42,7 +44,18 @@ public class HGListener implements Listener{
         scoreboard.getObjective("deaths").getScore(player.getName()).setScore(0); 
         player.addPotionEffects(Main.starterEffects);
     }
-
+    
+    @EventHandler
+    public void onDeath(EntityDeathEvent event) {
+    	
+    	if (event.getEntity() instanceof Player) {
+    		Player player = (Player) event.getEntity();
+    		player.setGameMode(GameMode.SPECTATOR);
+    		Bukkit.dispatchCommand(console, "title " + player.getName() + " subtitle {\"text\":\"You are now spectating.\",\"color\":\"gold\"}");
+    		Bukkit.dispatchCommand(console, "title "+ player.getName() + " title {\"text\":\"Wasted\",\"color\":\"dark_red\"}");
+    	}
+    }
+    
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
     	
