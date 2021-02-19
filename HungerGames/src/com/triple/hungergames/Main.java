@@ -1,6 +1,7 @@
 package com.triple.hungergames;
 
-import java.util.ArrayList;
+
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -12,8 +13,12 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class Main extends JavaPlugin{
-	
-	public static List<PotionEffect> starterEffects = new ArrayList<PotionEffect>();
+
+	public static List<PotionEffect> starterEffects = 
+			Arrays.asList(
+					new PotionEffect(PotionEffectType.REGENERATION, 12000, 9), 
+					new PotionEffect(PotionEffectType.SATURATION, 12000, 9));
+
 	public final static int MAX_BUILD_HEIGHT = 256;
     @Override
     public void onEnable() {
@@ -21,9 +26,6 @@ public class Main extends JavaPlugin{
     	this.getConfig().addDefault("scoreBoardInit", false);
     	this.getConfig().addDefault("deathCountInit", false);
     	
-    	starterEffects.add(new PotionEffect(PotionEffectType.REGENERATION, 10000, 10));
-        starterEffects.add(new PotionEffect(PotionEffectType.SATURATION, 10000, 10));
-        
         getLogger().info("HungerGames has been enabled.");
         PluginManager pm = getServer().getPluginManager();
         HGListener listener = new HGListener(this);
@@ -44,7 +46,14 @@ public class Main extends JavaPlugin{
             String lowerCmd = cmd.getName().toLowerCase();
 
             switch (lowerCmd) {
-
+            
+            case "start":
+            	player.sendMessage("That's the start command");
+            	// TODO set world border, set world center, set border warning, 
+            	// TODO spread players, clear effects, clear invents
+            	// TODO set world border to shrink, set up scheduler
+            	return true;
+            	
             case "welcome":
             	player.sendMessage("Welcome " + player.getName());
             	return true;
