@@ -6,3 +6,6 @@ commands:
     welcome:
       description: welcomes you
       usage: /<command>
+    start:
+      description: starts the game
+      usage: /<command>
