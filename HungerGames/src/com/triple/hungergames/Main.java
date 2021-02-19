@@ -29,6 +29,7 @@ public class Main extends JavaPlugin{
 
 	public final static int MAX_BUILD_HEIGHT = 256;
 	private static HGUtils hgu = new HGUtils();
+	private static Boolean gameStarted = false;
 	
 	@Override
     public void onEnable() {
@@ -46,7 +47,15 @@ public class Main extends JavaPlugin{
     public void onDisable() {
         getLogger().info("HungerGames has been disabled.");
     }    
-
+    
+    public static void setGameStarted(Boolean bool) {
+    	gameStarted = bool;
+    }
+    
+    public  static Boolean getGameStarted() {
+    	return gameStarted;
+    }
+    
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         Player playerSender = (Player) sender;
@@ -57,8 +66,10 @@ public class Main extends JavaPlugin{
 
             switch (lowerCmd) {
             
-            case "start":
+            case "start-2000":
             	// TODO set world border to shrink, set up scheduler
+            	setGameStarted(true);
+            	
             	ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
             	Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
             	World world = Bukkit.getServer().getWorld("world");
@@ -87,7 +98,7 @@ public class Main extends JavaPlugin{
             	}
             	
             	Bukkit.dispatchCommand(console, "spreadplayers 0 0 300 900 true @a");
-            	
+
             	return true;
             	
             case "welcome":

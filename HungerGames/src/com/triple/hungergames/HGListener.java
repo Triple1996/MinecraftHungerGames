@@ -45,12 +45,14 @@ public class HGListener implements Listener{
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
-
-        Location playerLoc = event.getPlayer().getLocation();
-        if ( (Math.abs( playerLoc.getX() ) > 16) || (Math.abs( playerLoc.getZ() ) > 16) ) {
-        	Location spawn = new Location(Bukkit.getWorld("world"), 0, hgu.getYValOfSurface(world, 0,0), 0);
-        	event.getPlayer().teleport(spawn);
-        }
+    	
+    	if (!Main.getGameStarted()) {
+	        Location playerLoc = event.getPlayer().getLocation();
+	        if ( (Math.abs( playerLoc.getX() ) > 16) || (Math.abs( playerLoc.getZ() ) > 16) ) {
+	        	Location spawn = new Location(Bukkit.getWorld("world"), 0, hgu.getYValOfSurface(world, 0,0), 0);
+	        	event.getPlayer().teleport(spawn);
+	        }
+    	}
     }
     
     @EventHandler
@@ -58,20 +60,20 @@ public class HGListener implements Listener{
 
     	hgu.initWorldBorder(console, border);
     	hgu.initSpawnArea(console, world);
-
+    	
     	    	
     	// If you wanted to create a new world, need to clear the config file
     	if (!plugin.getConfig().getBoolean("teamsInit")){
     		hgu.initTeams(console, scoreboard);
-    		hgu.setTrueAndSaveConfig(plugin, "teamsInit");
+    		hgu.setAndSaveConfig(plugin, "teamsInit", true);
     	}
     	if (!plugin.getConfig().getBoolean("scoreBoardInit")) {
     		hgu.initScoreBoard(console, scoreboard);
-    		hgu.setTrueAndSaveConfig(plugin, "scoreBoardInit");
+    		hgu.setAndSaveConfig(plugin, "scoreBoardInit", true);
     	}
     	if (!plugin.getConfig().getBoolean("deathCountInit")) {
     		hgu.initDeathCount(console, scoreboard);
-    		hgu.setTrueAndSaveConfig(plugin, "deathCountInit");
+    		hgu.setAndSaveConfig(plugin, "deathCountInit", true);
     	}
     	
     	Bukkit.dispatchCommand(console, "spreadplayers 0 0 0 1 true @a");
@@ -83,6 +85,9 @@ public class HGListener implements Listener{
     		hgu.welcomePlayer(console, player);
     		player.addPotionEffects(Main.starterEffects);
     	}
+    	
+    	Main.setGameStarted(false);
+    	
     }
     
     @EventHandler
