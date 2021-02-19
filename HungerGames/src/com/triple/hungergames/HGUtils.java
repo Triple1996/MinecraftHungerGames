@@ -1,5 +1,7 @@
 package com.triple.hungergames;
 
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -10,12 +12,20 @@ import org.bukkit.block.Block;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.RenderType;
 import org.bukkit.scoreboard.Scoreboard;
 
 public class HGUtils {
-		
+	
+	public void clearEffects(Player player) {
+		List<PotionEffect> activeEffects = (List<PotionEffect>) player.getActivePotionEffects();
+		for (PotionEffect effect : activeEffects) {
+			player.removePotionEffect(effect.getType());
+		}
+	}
+	
 	public void welcomePlayer(ConsoleCommandSender console, Player player) {
 		String msg = " {\"text\":\"Welcome to Minecraft Hunger Games!\",\"color\":\"yellow\"}";
 		Bukkit.dispatchCommand(console, "tellraw " + player.getName() + msg);
