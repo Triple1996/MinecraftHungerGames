@@ -57,7 +57,7 @@ public class HGListener implements Listener{
     
     @EventHandler
     public void onLoad(ServerLoadEvent event) {
-    	
+
     	hgu.initWorldBorder(console, border);
     	hgu.initSpawnArea(console, world);
 
@@ -90,9 +90,9 @@ public class HGListener implements Listener{
     @EventHandler
     public void onWorldInit(WorldInitEvent event) {
     	
+       
     	world.setSpawnLocation(0, hgu.getYValOfSurface(world, 0, 0), 0);
     	hgu.initWorldBorder(console, border);
-    	
     }
 }
 
