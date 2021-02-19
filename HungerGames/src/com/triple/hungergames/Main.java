@@ -120,14 +120,14 @@ public class Main extends JavaPlugin{
     private void startGame() {
     	
     	// TODO Add titles, change center, make final ring move, polish, etc
-    	
+    	ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
     	WorldBorder border = Bukkit.getServer().getWorld("world").getWorldBorder();
     	BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
     	
     	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
     		public void run() {
     			border.setSize(1750, 18); // run for 3 mins (3600 ticks)
-    			sendTitleAll("Ring Closing");
+    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
     		}
     	}, 240);	// after 2 mins (2400 ticks)
     	// 6000 total
@@ -135,7 +135,7 @@ public class Main extends JavaPlugin{
     	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
     		public void run() {
     			border.setSize(1000, 36);// run for 6 minutes (7200 ticks)
-    			sendTitleAll("Ring Closing");
+    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
     		}
     	}, 600+720);	// after 6 mins (7200 ticks)
     	// 14,400 total
@@ -143,20 +143,10 @@ public class Main extends JavaPlugin{
     	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
     		public void run() {
     			border.setSize(15, 30);// run for 5 mins(6000 ticks)
-    			sendTitleAll("Ring Closing");
+    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
     		}
     	}, 600+1440+600); // after 5 mins(6000 ticks)
     	// 1200 total
-    }
-    
-    private void sendTitleAll(String title) {
-    	World world = Bukkit.getServer().getWorld("world");
-    	Player player;
-    	List<Player> players = world.getPlayers();
-    	for (int i = 0; i < players.size(); i++) {
-    		player = players.get(i);
-    		player.sendTitle(title, "", 10, 70, 20);
-		}
     }
     
 }
