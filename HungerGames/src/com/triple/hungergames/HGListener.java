@@ -40,6 +40,7 @@ public class HGListener implements Listener{
         Player player = (Player) event.getPlayer();
         player.sendMessage("Welcome to Minecraft Hunger Games!");
         scoreboard.getObjective("kills").getScore(player.getName()).setScore(0); 
+        scoreboard.getObjective("deaths").getScore(player.getName()).setScore(0); 
 
     }
 
@@ -83,11 +84,17 @@ public class HGListener implements Listener{
     		plugin.getConfig().options().copyDefaults(true);
     		plugin.saveConfig();
     	}
+    	if (!plugin.getConfig().getBoolean("deathCountInit")) {
+    		hgu.initDeathCount(scoreboard);
+    		hgu.tellConsole(console, "initialized deathcount");
+    		plugin.getConfig().set("deathCountInit", true);
+    		plugin.getConfig().options().copyDefaults(true);
+    		plugin.saveConfig();
+    	}
     }
     
     @EventHandler
     public void onWorldInit(WorldInitEvent event) {
-    	// TODO initdeathcount,
 
     	border.setCenter(0, 0);
     	world.setSpawnLocation(0, hgu.getYValOfSurface(0, 0), 0);
