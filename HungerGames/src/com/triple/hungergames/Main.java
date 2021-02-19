@@ -69,7 +69,6 @@ public class Main extends JavaPlugin{
             switch (lowerCmd) {
             
             case "start-2000":
-            	// TODO set world border to shrink, set up scheduler
             	setGameStarted(true);
             	
             	ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
@@ -147,6 +146,8 @@ public class Main extends JavaPlugin{
     		}
     	}, 600+1440+600); // after 5 mins(6000 ticks)
     	// 12,000 total
+    	
+    	// TODO Schedule script for after final round, ring center moves
     }
     
 }

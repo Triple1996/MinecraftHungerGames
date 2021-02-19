@@ -76,6 +76,7 @@ public class HGListener implements Listener{
     	
     	    	
     	// If you wanted to create a new world, need to clear the config file
+    	// TODO This still doesn't want to work. Code at bottom never gets executed
     	if (!plugin.getConfig().getBoolean("teamsInit")){
     		hgu.initTeams(console, scoreboard);
     		hgu.setAndSaveConfig(plugin, "teamsInit", true);
@@ -97,6 +98,7 @@ public class HGListener implements Listener{
     		player = players.get(i);
     		hgu.welcomePlayer(console, player);
     		player.addPotionEffects(Main.starterEffects);
+    		player.setGameMode(GameMode.ADVENTURE);
     	}
     	
     	Main.setGameStarted(false);
