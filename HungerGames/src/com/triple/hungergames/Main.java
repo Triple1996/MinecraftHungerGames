@@ -4,6 +4,7 @@ package com.triple.hungergames;
 import java.util.Arrays;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -20,7 +21,9 @@ public class Main extends JavaPlugin{
 					new PotionEffect(PotionEffectType.SATURATION, 12000, 9));
 
 	public final static int MAX_BUILD_HEIGHT = 256;
-    @Override
+	private static HGUtils hgu = new HGUtils();
+	
+	@Override
     public void onEnable() {
     	this.getConfig().addDefault("teamsInit", false);
     	this.getConfig().addDefault("scoreBoardInit", false);
@@ -39,7 +42,7 @@ public class Main extends JavaPlugin{
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        Player player = (Player) sender;
+        Player playerSender = (Player) sender;
 
         if (sender instanceof Player) {
 
@@ -48,23 +51,32 @@ public class Main extends JavaPlugin{
             switch (lowerCmd) {
             
             case "start":
-            	player.sendMessage("That's the start command");
+            	playerSender.sendMessage("That's the start command");
             	// TODO set world border, set world center, set border warning, 
             	// TODO spread players, clear effects, clear invents
             	// TODO set world border to shrink, set up scheduler
+            	Player player;
+            	List<Player> players = Bukkit.getServer().getWorld("world").getPlayers();
+            	for (int i = 0; i < players.size(); i++) {
+            		player = players.get(i);
+            		hgu.clearEffects(player);
+            		player.getInventory().clear();
+            	}
+            	
+            	
             	return true;
             	
             case "welcome":
-            	player.sendMessage("Welcome " + player.getName());
+            	playerSender.sendMessage("Welcome " + playerSender.getName());
             	return true;
 
             default:
 
-                player.sendMessage("Your command was not recognized.");
+            	playerSender.sendMessage("Your command was not recognized.");
                 return true;
             }
         }
-        player.sendMessage("Somehow you aren't a player.");
+        playerSender.sendMessage("Somehow you aren't a player.");
         return true;
     }
 
