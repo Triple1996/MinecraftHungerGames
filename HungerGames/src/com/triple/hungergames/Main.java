@@ -146,7 +146,7 @@ public class Main extends JavaPlugin{
     			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
     		}
     	}, 600+1440+600); // after 5 mins(6000 ticks)
-    	// 1200 total
+    	// 12,000 total
     }
     
 }
