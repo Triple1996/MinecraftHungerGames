@@ -9,6 +9,7 @@ import org.bukkit.Difficulty;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.WorldBorder;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -18,6 +19,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scoreboard.Scoreboard;
 
 public class Main extends JavaPlugin{
@@ -75,8 +77,8 @@ public class Main extends JavaPlugin{
             	World world = Bukkit.getServer().getWorld("world");
             	Player player;
 	
-            	world.getWorldBorder().setCenter(0, 0);
-            	world.getWorldBorder().setSize(2000);
+            	world.getWorldBorder().setCenter(0, 0);		// TODO this should be random
+            	world.getWorldBorder().setSize(2000);		
             	world.getWorldBorder().setWarningDistance(100);
             	
             	
@@ -96,7 +98,7 @@ public class Main extends JavaPlugin{
             		player.getInventory().clear();
             		player.getInventory().setItem(8, compass);
             	}
-            	
+            	startGame();
             	Bukkit.dispatchCommand(console, "spreadplayers 0 0 300 900 true @a");
 
             	return true;
@@ -115,4 +117,30 @@ public class Main extends JavaPlugin{
         return true;
     }
 
+    private void startGame() {
+    	WorldBorder border = Bukkit.getServer().getWorld("world").getWorldBorder();
+    	BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
+    	
+    	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
+    		public void run() {
+    			border.setSize(1750, 18); // run for 3 mins (3600 ticks)
+    		}
+    	}, 240);	// after 2 mins (2400 ticks)
+    	// 6000 total
+    	
+    	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
+    		public void run() {
+    			border.setSize(1000, 36);// run for 6 minutes (7200 ticks)
+    		}
+    	}, 600+720);	// after 6 mins (7200 ticks)
+    	// 14,400 total
+    	
+    	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
+    		public void run() {
+    			border.setSize(15, 30);// run for 5 mins(6000 ticks)
+    		}
+    	}, 600+1440+600); // after 5 mins(6000 ticks)
+    	// 1200 total
+    }
+    
 }
