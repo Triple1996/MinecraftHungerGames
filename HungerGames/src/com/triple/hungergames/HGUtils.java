@@ -18,7 +18,7 @@ public class HGUtils {
 	private World world = Bukkit.getWorld("world");
 
 
-	public void initSpawnArea() {
+	public void initSpawnArea(ConsoleCommandSender console) {
 
 		Location spawnPlatform;
 		for (int x = -2; x <= 2; x++){
@@ -46,23 +46,24 @@ public class HGUtils {
     		}
     		pillarOrigin = pillarOrigin.getRelative(0,1,0);
     	}
+    	tellConsole(console, "initialized spawn area");
 	}
 
-	public void initScoreBoard(Scoreboard scoreboard) {
+	public void initScoreBoard(ConsoleCommandSender console, Scoreboard scoreboard) {
 
 		scoreboard.registerNewObjective("kills", "playerKillCount", "Kills", RenderType.INTEGER);
 	    scoreboard.getObjective("kills").setDisplaySlot(DisplaySlot.SIDEBAR);
-
+		tellConsole(console, "initialized scoreboard");
 	}
 		
-	public void initDeathCount(Scoreboard scoreboard) {
+	public void initDeathCount(ConsoleCommandSender console, Scoreboard scoreboard) {
 
 		scoreboard.registerNewObjective("deaths", "deathCount", "Deaths", RenderType.INTEGER);
 	    scoreboard.getObjective("deaths").setDisplaySlot(DisplaySlot.PLAYER_LIST);
-
+		tellConsole(console, "initialized deathcount");
 	}
 	
-	public void initTeams(Scoreboard scoreboard) {
+	public void initTeams(ConsoleCommandSender console, Scoreboard scoreboard) {
 		
 		String[] teams = {"Red", "Blue", "Cyan", "Purple", "Green", "White",
 		                  	"Orange", "Lime", "Black", "Pink"};
@@ -74,12 +75,14 @@ public class HGUtils {
 			scoreboard.registerNewTeam(teams[i]);
 			scoreboard.getTeam(teams[i]).setColor(colors[i]);
 		}
+    	tellConsole(console, "initialized teams");
 	}
 	
-	public void initWorldBorder(WorldBorder border) {
+	public void initWorldBorder(ConsoleCommandSender console, WorldBorder border) {
 		border.setCenter(0, 0);
     	border.setSize(150);
     	border.setWarningDistance(0);
+    	tellConsole(console, "initialized world border");
 	}
 	public int getYValOfSurface(int x, int z) {
 		World world = Bukkit.getWorld("world");
