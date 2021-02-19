@@ -5,8 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -51,19 +53,24 @@ public class Main extends JavaPlugin{
             switch (lowerCmd) {
             
             case "start":
-            	playerSender.sendMessage("That's the start command");
-            	// TODO set world border, set world center, set border warning, 
-            	// TODO spread players, clear effects, clear invents
             	// TODO set world border to shrink, set up scheduler
+            	// TODO difficulty hard, give compass, time set day, gamemode survival
+            	// TODO reset kills and deaths
+            	ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+            	World world = Bukkit.getServer().getWorld("world");
             	Player player;
-            	List<Player> players = Bukkit.getServer().getWorld("world").getPlayers();
+	
+            	world.getWorldBorder().setCenter(0, 0);
+            	world.getWorldBorder().setSize(2000);
+            	world.getWorldBorder().setWarningDistance(100);
+            	            	
+            	Bukkit.dispatchCommand(console, "spreadplayers 0 0 300 900 true @a");
+            	List<Player> players = world.getPlayers();
             	for (int i = 0; i < players.size(); i++) {
             		player = players.get(i);
             		hgu.clearEffects(player);
             		player.getInventory().clear();
             	}
-            	
-            	
             	return true;
             	
             case "welcome":
