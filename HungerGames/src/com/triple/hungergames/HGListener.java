@@ -57,24 +57,21 @@ public class HGListener implements Listener{
     @EventHandler
     public void onLoad(ServerLoadEvent event) {
     	
-    	hgu.initWorldBorder(border);
-    	hgu.initSpawnArea();
-    	hgu.tellConsole(console, "initialized spawn area");
+    	hgu.initWorldBorder(console, border);
+    	hgu.initSpawnArea(console);
+
     	    	
     	// If you wanted to create a new world, need to clear the config file
     	if (!plugin.getConfig().getBoolean("teamsInit")){
-    		hgu.initTeams(scoreboard);
-    		hgu.tellConsole(console, "initialized teams");
+    		hgu.initTeams(console, scoreboard);
     		hgu.setTrueAndSaveConfig(plugin, "teamsInit");
     	}
     	if (!plugin.getConfig().getBoolean("scoreBoardInit")) {
-    		hgu.initScoreBoard(scoreboard);
-    		hgu.tellConsole(console, "initialized scoreboard");
+    		hgu.initScoreBoard(console, scoreboard);
     		hgu.setTrueAndSaveConfig(plugin, "scoreBoardInit");
     	}
     	if (!plugin.getConfig().getBoolean("deathCountInit")) {
-    		hgu.initDeathCount(scoreboard);
-    		hgu.tellConsole(console, "initialized deathcount");
+    		hgu.initDeathCount(console, scoreboard);
     		hgu.setTrueAndSaveConfig(plugin, "deathCountInit");
     	}
     	
@@ -91,10 +88,7 @@ public class HGListener implements Listener{
     public void onWorldInit(WorldInitEvent event) {
     	
     	world.setSpawnLocation(0, hgu.getYValOfSurface(0, 0), 0);
-    	hgu.initWorldBorder(border);
-    	hgu.tellConsole(console, "initialized world border");
-    	
-    	
+    	hgu.initWorldBorder(console, border);
     	
     }
 }
