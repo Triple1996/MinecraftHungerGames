@@ -49,7 +49,7 @@ public class HGListener implements Listener{
 
         Location location = event.getPlayer().getLocation();
         if ( (Math.abs( location.getX() ) > 16) || (Math.abs( location.getZ() ) > 16) ) {
-        	Location spawn = new Location(Bukkit.getWorld("world"), 0, hgu.getYValOfSurface(0,0), 0);
+        	Location spawn = new Location(Bukkit.getWorld("world"), 0, hgu.getYValOfSurface(world, 0,0), 0);
         	event.getPlayer().teleport(spawn);
         }
     }
@@ -58,7 +58,7 @@ public class HGListener implements Listener{
     public void onLoad(ServerLoadEvent event) {
     	
     	hgu.initWorldBorder(console, border);
-    	hgu.initSpawnArea(console);
+    	hgu.initSpawnArea(console, world);
 
     	    	
     	// If you wanted to create a new world, need to clear the config file
@@ -87,7 +87,7 @@ public class HGListener implements Listener{
     @EventHandler
     public void onWorldInit(WorldInitEvent event) {
     	
-    	world.setSpawnLocation(0, hgu.getYValOfSurface(0, 0), 0);
+    	world.setSpawnLocation(0, hgu.getYValOfSurface(world, 0, 0), 0);
     	hgu.initWorldBorder(console, border);
     	
     }
