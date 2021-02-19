@@ -1,6 +1,5 @@
 package com.triple.hungergames;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -15,10 +14,8 @@ import org.bukkit.scoreboard.Scoreboard;
 
 public class HGUtils {
 	final static int MAX_BUILD_HEIGHT = 256;
-	private World world = Bukkit.getWorld("world");
 
-
-	public void initSpawnArea(ConsoleCommandSender console) {
+	public void initSpawnArea(ConsoleCommandSender console, World world) {
 
 		Location spawnPlatform;
 		for (int x = -2; x <= 2; x++){
@@ -79,13 +76,14 @@ public class HGUtils {
 	}
 	
 	public void initWorldBorder(ConsoleCommandSender console, WorldBorder border) {
+
 		border.setCenter(0, 0);
     	border.setSize(150);
     	border.setWarningDistance(0);
     	tellConsole(console, "initialized world border");
 	}
-	public int getYValOfSurface(int x, int z) {
-		World world = Bukkit.getWorld("world");
+	
+	public int getYValOfSurface(World world, int x, int z) {
 		Location y = new Location(world, x, 0, z);
 		int safe = 0;
 		while ( safe < 300 &&
