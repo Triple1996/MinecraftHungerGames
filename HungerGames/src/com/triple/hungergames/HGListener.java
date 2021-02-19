@@ -31,6 +31,7 @@ public class HGListener implements Listener{
 	
     // Constructor
     public HGListener(Main plugin) {
+    	
     	this.plugin = plugin;
     }
 
@@ -84,8 +85,6 @@ public class HGListener implements Listener{
     		hgu.welcomePlayer(console, player);
     		player.addPotionEffects(Main.starterEffects);
     	}
-    	
-    	
     }
     
     @EventHandler
