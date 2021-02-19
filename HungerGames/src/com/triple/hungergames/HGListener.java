@@ -1,7 +1,6 @@
 package com.triple.hungergames;
 
 import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -42,7 +41,7 @@ public class HGListener implements Listener{
         hgu.welcomePlayer(console, player);;
         scoreboard.getObjective("kills").getScore(player.getName()).setScore(0); 
         scoreboard.getObjective("deaths").getScore(player.getName()).setScore(0); 
-
+        player.addPotionEffects(Main.starterEffects);
     }
 
     @EventHandler
@@ -83,7 +82,9 @@ public class HGListener implements Listener{
     	for (int i = 0; i < players.size(); i++) {
     		player = players.get(i);
     		hgu.welcomePlayer(console, player);
+    		player.addPotionEffects(Main.starterEffects);
     	}
+    	
     	
     }
     
