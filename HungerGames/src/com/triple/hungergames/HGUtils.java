@@ -127,8 +127,9 @@ public class HGUtils {
 	    console.sendMessage(message);
 	}
 
-	public void setTrueAndSaveConfig(Plugin plugin, String var) {
-		plugin.getConfig().set(var, true);
+	public void setAndSaveConfig(Plugin plugin, String var, Boolean bool) {
+		Bukkit.getServer().getConsoleSender().sendMessage("config changed");
+		plugin.getConfig().set(var, false);
 		plugin.getConfig().options().copyDefaults(true);
 		plugin.saveConfig();
 	}
