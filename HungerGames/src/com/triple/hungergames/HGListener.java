@@ -57,18 +57,10 @@ public class HGListener implements Listener{
     @EventHandler
     public void onLoad(ServerLoadEvent event) {
     	
-    	border.setCenter(0, 0);
-    	border.setSize(150);
-    	border.setWarningDistance(0);
-    	Bukkit.dispatchCommand(console, "spreadplayers 0 0 0 1 true @a");
+    	hgu.initWorldBorder(border);
     	hgu.initSpawnArea();
     	hgu.tellConsole(console, "initialized spawn area");
-    	List<Player> players = Bukkit.getServer().getWorld("world").getPlayers();
-    	for (int i = 0; i < players.size(); i++) {
-    		Player player = players.get(i);
-    		player.sendMessage("Welcome to Minecraft Hunger Games!");
-    	}
-    	
+    	    	
     	// If you wanted to create a new world, need to clear the config file
     	if (!plugin.getConfig().getBoolean("teamsInit")){
     		hgu.initTeams(scoreboard);
@@ -85,16 +77,21 @@ public class HGListener implements Listener{
     		hgu.tellConsole(console, "initialized deathcount");
     		hgu.setTrueAndSaveConfig(plugin, "deathCountInit");
     	}
+    	
+    	Bukkit.dispatchCommand(console, "spreadplayers 0 0 0 1 true @a");
+    	List<Player> players = Bukkit.getServer().getWorld("world").getPlayers();
+    	for (int i = 0; i < players.size(); i++) {
+    		Player player = players.get(i);
+    		player.sendMessage("Welcome to Minecraft Hunger Games!");
+    	}
+    	
     }
     
     @EventHandler
     public void onWorldInit(WorldInitEvent event) {
-
-    	border.setCenter(0, 0);
+    	
     	world.setSpawnLocation(0, hgu.getYValOfSurface(0, 0), 0);
-    	border.setCenter(0, 0);
-    	border.setSize(150);
-    	border.setWarningDistance(0);
+    	hgu.initWorldBorder(border);
     	hgu.tellConsole(console, "initialized world border");
     	
     	
