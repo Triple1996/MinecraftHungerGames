@@ -52,6 +52,13 @@ public class HGUtils {
 	    scoreboard.getObjective("kills").setDisplaySlot(DisplaySlot.SIDEBAR);
 
 	}
+		
+	public void initDeathCount(Scoreboard scoreboard) {
+
+		scoreboard.registerNewObjective("deaths", "deathCount", "Deaths", RenderType.INTEGER);
+	    scoreboard.getObjective("deaths").setDisplaySlot(DisplaySlot.PLAYER_LIST);
+
+	}
 	
 	public void initTeams(Scoreboard scoreboard) {
 		
