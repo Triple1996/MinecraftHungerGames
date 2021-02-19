@@ -24,9 +24,7 @@ public class HGListener implements Listener{
 	private World world = Bukkit.getWorld("world");
 	private WorldBorder border = world.getWorldBorder();
 	private Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
-	final static int MAX_BUILD_HEIGHT = 256;
-	public static boolean teamsInit = false;
-	public boolean scoreBoardInit = false;
+
 	Plugin plugin;
 	
     // Constructor
