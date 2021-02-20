@@ -72,20 +72,13 @@ public class HGUtils {
 
 		scoreboard.registerNewObjective("kills", "playerKillCount", "Kills", RenderType.INTEGER);
 	    scoreboard.getObjective("kills").setDisplaySlot(DisplaySlot.SIDEBAR);
-	    scoreboard.registerNewObjective("deaths", "deathCount", "Deaths", RenderType.INTEGER);
-	    scoreboard.getObjective("deaths").setDisplaySlot(DisplaySlot.PLAYER_LIST);
-		tellConsole(console, "initialized deathcount");
 		tellConsole(console, "initialized scoreboard");
 	}
 
 	public void initTeams(ConsoleCommandSender console, Scoreboard scoreboard) {
 		
-		String[] teams = {"Red", "Blue", "Cyan", "Purple", "Green", "White",
-		                  	"Orange", "Lime", "Black", "Pink"};
-		ChatColor[] colors = {ChatColor.DARK_RED, ChatColor.BLUE, ChatColor.AQUA,
-								ChatColor.DARK_PURPLE, ChatColor.DARK_GREEN, 
-								ChatColor.WHITE, ChatColor.GOLD, ChatColor.GREEN,
-								ChatColor.DARK_GRAY, ChatColor.LIGHT_PURPLE};
+		String[] teams = {"Red"};
+		ChatColor[] colors = {ChatColor.DARK_RED};
 		for (int i = 0; i < teams.length; i++) {
 			scoreboard.registerNewTeam(teams[i]);
 			scoreboard.getTeam(teams[i]).setColor(colors[i]);
