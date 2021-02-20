@@ -51,6 +51,7 @@ public class HGListener implements Listener{
     	if (event.getEntity() instanceof Player) {
     		Player player = (Player) event.getEntity();
     		player.setGameMode(GameMode.SPECTATOR);
+    		scoreboard.getTeam("Red").addEntry(player.getName());
     		Bukkit.dispatchCommand(console, "title " + player.getName() + " subtitle {\"text\":\"You are now spectating.\",\"color\":\"gold\"}");
     		Bukkit.dispatchCommand(console, "title "+ player.getName() + " title {\"text\":\"Wasted\",\"color\":\"dark_red\"}");
     	}
