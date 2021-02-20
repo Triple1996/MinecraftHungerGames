@@ -71,17 +71,15 @@ public class HGListener implements Listener{
     @EventHandler
     public void onLoad(ServerLoadEvent event) {
     	
+    	Bukkit.dispatchCommand(console, "gamerule sendCommandFeedback false");
     	world.setSpawnLocation(0, hgu.getYValOfSurface(world, 0, 0), 0);
     	hgu.initWorldBorder(console, border);
     	hgu.initSpawnArea(console, world);
-    	
-    	    	
-    	// If you wanted to create a new world, need to clear the config file
-//    	if (!plugin.getConfig().getBoolean("teamsInit")){
+
     	if (scoreboard.getTeams().size() == 0) {
     		hgu.initTeams(console, scoreboard);
     	}
-//    	if (!plugin.getConfig().getBoolean("scoreBoardInit")) {
+
     	if (scoreboard.getObjectives().size() == 0) {
     		hgu.initScoreBoard(console, scoreboard);
     	}
