@@ -132,6 +132,7 @@ public class Main extends JavaPlugin{
     	BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
     	
     	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
+    		@Override
     		public void run() {
     			border.setSize(1750, 180); // run for 3 mins (3600 ticks)
     			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
@@ -140,6 +141,7 @@ public class Main extends JavaPlugin{
     	// 6000 total
     	
     	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
+    		@Override
     		public void run() {
     			border.setSize(1000, 360);// run for 6 minutes (7200 ticks)
     			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
@@ -148,6 +150,7 @@ public class Main extends JavaPlugin{
     	// 14,400 total
     	
     	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
+    		@Override
     		public void run() {
     			border.setSize(15, 300);// run for 5 mins(6000 ticks)
     			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
@@ -155,7 +158,26 @@ public class Main extends JavaPlugin{
     	}, 6000+14400+6000); // after 5 mins(6000 ticks)
     	// 12,000 total
     	
-    	// TODO Schedule script for after final round, ring center moves
+    	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
+    		@Override
+    		public void run() {
+    			repeatedlyMoveCenter();
+    		}
+    	}, 6000+14400+12000);
+    }
+    
+    private void repeatedlyMoveCenter() {
+    	BukkitScheduler scheduler = getServer().getScheduler();
+        scheduler.scheduleSyncRepeatingTask(this, new Runnable() {
+            @Override
+            public void run() {
+                // move center, focus compasses
+            	
+            	
+            	
+            	
+            }
+        }, 0L, 200L);  // repeat every 200 ticks (10s), starting when called
     }
     
 }
