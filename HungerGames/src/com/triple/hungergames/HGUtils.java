@@ -11,7 +11,6 @@ import org.bukkit.WorldBorder;
 import org.bukkit.block.Block;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.RenderType;
@@ -73,16 +72,12 @@ public class HGUtils {
 
 		scoreboard.registerNewObjective("kills", "playerKillCount", "Kills", RenderType.INTEGER);
 	    scoreboard.getObjective("kills").setDisplaySlot(DisplaySlot.SIDEBAR);
-		tellConsole(console, "initialized scoreboard");
-	}
-		
-	public void initDeathCount(ConsoleCommandSender console, Scoreboard scoreboard) {
-
-		scoreboard.registerNewObjective("deaths", "deathCount", "Deaths", RenderType.INTEGER);
+	    scoreboard.registerNewObjective("deaths", "deathCount", "Deaths", RenderType.INTEGER);
 	    scoreboard.getObjective("deaths").setDisplaySlot(DisplaySlot.PLAYER_LIST);
 		tellConsole(console, "initialized deathcount");
+		tellConsole(console, "initialized scoreboard");
 	}
-	
+
 	public void initTeams(ConsoleCommandSender console, Scoreboard scoreboard) {
 		
 		String[] teams = {"Red", "Blue", "Cyan", "Purple", "Green", "White",
@@ -125,12 +120,6 @@ public class HGUtils {
 
 	public void tellConsole(ConsoleCommandSender console, String message){
 	    console.sendMessage(message);
-	}
-
-	public void setAndSaveConfig(Plugin plugin, String var, Boolean bool) {
-		plugin.getConfig().set(var, bool);
-		plugin.getConfig().options().copyDefaults(true);
-		plugin.saveConfig();
 	}
 	
 }
