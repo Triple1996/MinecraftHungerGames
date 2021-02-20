@@ -7,6 +7,7 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.WorldBorder;
@@ -68,37 +69,23 @@ public class Main extends JavaPlugin{
             case "start-2000":
             	setGameStarted(true);
             	
-            	ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-            	Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+                ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
             	World world = Bukkit.getServer().getWorld("world");
-            	Player player;
-	
-            	world.getWorldBorder().setCenter(0, 0);		// TODO this should be random
+            	
+
+            	int xCenter = (int) (Math.random() * 101);
+            	int zCenter = (int) (Math.random() * 101);
+            	
+            	world.getWorldBorder().setCenter(xCenter, zCenter);		// TODO this should be random
             	world.getWorldBorder().setSize(2000);		
             	world.getWorldBorder().setWarningDistance(100);
             	
-            	
-                world.setDifficulty(Difficulty.HARD);
-                world.setTime(1000);
-                
-            	ItemStack compass = new ItemStack(Material.COMPASS, 1);
-            	
-            	// "for each player"
-            	List<Player> players = world.getPlayers();
-            	for (int i = 0; i < players.size(); i++) {
-            		player = players.get(i);
-            		scoreboard.getObjective("kills").getScore(player.getName()).setScore(0); 
-                    scoreboard.getObjective("deaths").getScore(player.getName()).setScore(0); 
-            		player.setGameMode(GameMode.SURVIVAL);
-            		hgu.clearEffects(player);
-            		player.getInventory().clear();
-            		player.getInventory().setItem(8, compass);
-            	}
+            	prepGame(world, xCenter, zCenter);
             	startGame();
-            	Bukkit.dispatchCommand(console, "spreadplayers 0 0 300 900 true @a");
+            	Bukkit.dispatchCommand(console, "spreadplayers " + xCenter + " " + zCenter + " 300 900 true @a");
 
             	return true;
-            	
+
             case "welcome":
             	playerSender.sendMessage("Welcome " + playerSender.getName());
             	return true;
@@ -113,6 +100,30 @@ public class Main extends JavaPlugin{
         return true;
     }
 
+    private void prepGame(World world, int xCenter, int zCenter) {
+    	// clears effects and invents, gives everyone a compass, sets gamemode, reset kils/deaths
+
+    	Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+    	ItemStack compass = new ItemStack(Material.COMPASS, 1);
+    	Player player;
+    	
+    	world.setDifficulty(Difficulty.HARD);
+        world.setTime(1000);
+        
+    	// "for each player"
+    	List<Player> players = world.getPlayers();
+    	for (int i = 0; i < players.size(); i++) {
+    		player = players.get(i);
+    		scoreboard.getObjective("kills").getScore(player.getName()).setScore(0); 
+            scoreboard.getObjective("deaths").getScore(player.getName()).setScore(0); 
+    		player.setGameMode(GameMode.SURVIVAL);
+    		hgu.clearEffects(player);
+    		player.getInventory().clear();
+    		player.getInventory().setItem(8, compass);
+    		player.setCompassTarget(new Location(world, xCenter, hgu.getYValOfSurface(world, xCenter, zCenter), zCenter));
+    	}
+    }
+    
     private void startGame() {
     	
     	// TODO Add titles, change center, make final ring move, polish, etc
