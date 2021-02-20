@@ -76,7 +76,7 @@ public class Main extends JavaPlugin{
             	int xCenter = (int) (Math.random() * 101);
             	int zCenter = (int) (Math.random() * 101);
             	
-            	world.getWorldBorder().setCenter(xCenter, zCenter);		// TODO this should be random
+            	world.getWorldBorder().setCenter(xCenter, zCenter);
             	world.getWorldBorder().setSize(2000);		
             	world.getWorldBorder().setWarningDistance(100);
             	
