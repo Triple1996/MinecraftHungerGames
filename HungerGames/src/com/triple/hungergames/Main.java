@@ -73,8 +73,8 @@ public class Main extends JavaPlugin{
             	World world = Bukkit.getServer().getWorld("world");
             	
 
-            	int xCenter = (int) (Math.random() * 101);
-            	int zCenter = (int) (Math.random() * 101);
+            	int xCenter = (int) ((Math.random() * 401) - 200);
+            	int zCenter = (int) ((Math.random() * 401) - 200);
             	
             	world.getWorldBorder().setCenter(xCenter, zCenter);
             	world.getWorldBorder().setSize(2000);		
