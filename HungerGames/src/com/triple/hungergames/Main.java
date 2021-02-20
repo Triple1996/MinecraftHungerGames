@@ -122,26 +122,26 @@ public class Main extends JavaPlugin{
     	
     	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
     		public void run() {
-    			border.setSize(1750, 18); // run for 3 mins (3600 ticks)
+    			border.setSize(1750, 180); // run for 3 mins (3600 ticks)
     			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
     		}
-    	}, 240);	// after 2 mins (2400 ticks)
+    	}, 2400);	// after 2 mins (2400 ticks)
     	// 6000 total
     	
     	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
     		public void run() {
-    			border.setSize(1000, 36);// run for 6 minutes (7200 ticks)
+    			border.setSize(1000, 360);// run for 6 minutes (7200 ticks)
     			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
     		}
-    	}, 600+720);	// after 6 mins (7200 ticks)
+    	}, 6000+7200);	// after 6 mins (7200 ticks)
     	// 14,400 total
     	
     	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
     		public void run() {
-    			border.setSize(15, 30);// run for 5 mins(6000 ticks)
+    			border.setSize(15, 300);// run for 5 mins(6000 ticks)
     			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
     		}
-    	}, 600+1440+600); // after 5 mins(6000 ticks)
+    	}, 6000+14400+6000); // after 5 mins(6000 ticks)
     	// 12,000 total
     	
     	// TODO Schedule script for after final round, ring center moves
