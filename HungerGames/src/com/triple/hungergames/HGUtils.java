@@ -128,7 +128,7 @@ public class HGUtils {
 	}
 
 	public void setAndSaveConfig(Plugin plugin, String var, Boolean bool) {
-		plugin.getConfig().set(var, false);
+		plugin.getConfig().set(var, bool);
 		plugin.getConfig().options().copyDefaults(true);
 		plugin.saveConfig();
 	}

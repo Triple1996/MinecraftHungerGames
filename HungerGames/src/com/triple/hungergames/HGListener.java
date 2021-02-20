@@ -76,8 +76,6 @@ public class HGListener implements Listener{
     	
     	    	
     	// If you wanted to create a new world, need to clear the config file
-    	// TODO This still doesn't want to work. Code at bottom never gets executed
-	// IDEA: instead of config vars, use scoreboard.getTeams(). If size > 0, execute
     	if (!plugin.getConfig().getBoolean("teamsInit")){
     		hgu.initTeams(console, scoreboard);
     		hgu.setAndSaveConfig(plugin, "teamsInit", true);
