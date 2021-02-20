@@ -82,7 +82,8 @@ public class Main extends JavaPlugin{
             	
             	prepGame(world, xCenter, zCenter);
             	startGame();
-            	Bukkit.dispatchCommand(console, "spreadplayers " + xCenter + " " + zCenter + " 300 900 true @a");
+            	// TODO when teams are set up, change option to "true", so teams stay together
+            	Bukkit.dispatchCommand(console, "spreadplayers " + xCenter + " " + zCenter + " 300 900 false @a");
 
             	return true;
 
@@ -109,8 +110,7 @@ public class Main extends JavaPlugin{
     	
     	world.setDifficulty(Difficulty.HARD);
         world.setTime(1000);
-        
-    	// "for each player"
+
     	List<Player> players = world.getPlayers();
     	for (int i = 0; i < players.size(); i++) {
     		player = players.get(i);
@@ -126,7 +126,7 @@ public class Main extends JavaPlugin{
     
     private void startGame() {
     	
-    	// TODO Add titles, change center, make final ring move, polish, etc
+    	// TODO polish
     	ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
     	WorldBorder border = Bukkit.getServer().getWorld("world").getWorldBorder();
     	BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
@@ -168,16 +168,36 @@ public class Main extends JavaPlugin{
     
     private void repeatedlyMoveCenter() {
     	BukkitScheduler scheduler = getServer().getScheduler();
+    	World world = Bukkit.getWorld("world");
         scheduler.scheduleSyncRepeatingTask(this, new Runnable() {
             @Override
             public void run() {
-                // move center, focus compasses
+            	int direction = (int)(Math.random()*4);
+            	Location newCenter = world.getWorldBorder().getCenter();
             	
-            	
-            	
-            	
+            	switch (direction){
+            	case 0:
+            		newCenter.add(1, 0, 1);
+            		break;
+            	case 1:
+            		newCenter.add(1, 0, -1);
+            		break;
+            	case 2:
+            		newCenter.add(-1, 0, 1);
+            		break;
+            	case 3:
+            		newCenter.add(-1, 0, -1);
+            		break;
+            	default:
+            		break;
+            	}
+            	world.getWorldBorder().setCenter(newCenter);
+            	List<Player> players = world.getPlayers();
+            	for (int i = 0; i < players.size(); i++) {
+            		players.get(i).setCompassTarget(newCenter);
+            	}          	
             }
-        }, 0L, 200L);  // repeat every 200 ticks (10s), starting when called
+        }, 0L, 100L);  // repeat every 100 ticks (5s), starting when called
     }
     
 }
