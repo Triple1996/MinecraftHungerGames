@@ -156,13 +156,13 @@ public class Main extends JavaPlugin{
     	    	    	    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Final Round\",\"color\":\"gold\"}");
     	    	    	    			repeatedlyMoveCenter();
     	    	    	    		}
-    	    	    	    	}, 6000); // 5 mins wait (6000 ticks)
+    	    	    	    	}, 6000); // 5 mins closing(6000 ticks)
     	    	    			
     	    	    		}
-    	    	    	}, 7200+6000); // 6 mins closing, 5 mins wait(6000 ticks)
+    	    	    	}, 7200+6000); // 6 mins closing(7200 ticks), 5 mins wait(6000 ticks)
     	    			
     	    		}
-    	    	}, 3600+7200);	// 3 mins closing, 6 mins wait(7200 ticks)
+    	    	}, 3600+7200);	// 3 mins closing(3600 ticks), 6 mins wait(7200 ticks)
     			
     		}
     	}, 2400);	// 2 mins wait(2400 ticks)
