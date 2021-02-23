@@ -37,10 +37,12 @@ public class HGListener implements Listener{
 
     @EventHandler
     public void OnPlayerJoin(PlayerJoinEvent event) {
+    	// TODO, implement winner screen
+    	// pseudocode: keep track of players leaving/joining before gamestart, when playercount == 1, display title to last person standing
     	if (!Main.getGameStarted()) {
     		Player player = (Player) event.getPlayer();
 	        hgu.welcomePlayer(console, player);;
-	        scoreboard.getObjective("kills").getScore(player.getName()).setScore(0); 
+	        scoreboard.getObjective("kills").getScore(player.getName()).setScore(0);
 	        player.addPotionEffects(Main.starterEffects);
     	}
         
