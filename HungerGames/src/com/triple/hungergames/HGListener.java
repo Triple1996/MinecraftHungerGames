@@ -37,12 +37,14 @@ public class HGListener implements Listener{
 
     @EventHandler
     public void OnPlayerJoin(PlayerJoinEvent event) {
-
-        Player player = (Player) event.getPlayer();
-        hgu.welcomePlayer(console, player);;
-        scoreboard.getObjective("kills").getScore(player.getName()).setScore(0); 
-        scoreboard.getObjective("deaths").getScore(player.getName()).setScore(0); 
-        player.addPotionEffects(Main.starterEffects);
+    	if (!Main.getGameStarted()) {
+    		Player player = (Player) event.getPlayer();
+	        hgu.welcomePlayer(console, player);;
+	        scoreboard.getObjective("kills").getScore(player.getName()).setScore(0); 
+	        scoreboard.getObjective("deaths").getScore(player.getName()).setScore(0); 
+	        player.addPotionEffects(Main.starterEffects);
+    	}
+        
     }
     
     @EventHandler
