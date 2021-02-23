@@ -103,13 +103,13 @@ public class Main extends JavaPlugin{
     }
 
     private void prepGame(World world, int xCenter, int zCenter) {
-    	// clears effects and invents, gives everyone a compass, sets gamemode, reset kils/deaths
+    	// clears effects and invents, gives everyone a compass, sets gamemode, reset kills
 
     	Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
     	ItemStack compass = new ItemStack(Material.COMPASS, 1);
     	Player player;
     	
-    	world.setDifficulty(Difficulty.HARD);
+    	world.setDifficulty(Difficulty.HARD);	// This is overridden by whatever is in server.PROPERTIES
         world.setTime(1000);
 
     	List<Player> players = world.getPlayers();
