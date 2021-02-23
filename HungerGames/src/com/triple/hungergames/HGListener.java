@@ -77,11 +77,11 @@ public class HGListener implements Listener{
     	hgu.initWorldBorder(console, border);
     	hgu.initSpawnArea(console, world);
 
-    	if (scoreboard.getTeams().size() == 0) {
+    	if (scoreboard.getTeam("Red") == null) {
     		hgu.initTeams(console, scoreboard);
     	}
 
-    	if (scoreboard.getObjectives().size() == 0) {
+    	if (scoreboard.getObjective("kills") == null) {
     		hgu.initScoreBoard(console, scoreboard);
     	}
 
