@@ -25,7 +25,7 @@ import org.bukkit.scoreboard.Scoreboard;
 
 public class Main extends JavaPlugin{
 
-	public static List<PotionEffect> starterEffects = 
+	public final static List<PotionEffect> starterEffects = 
 			Arrays.asList(
 					new PotionEffect(PotionEffectType.REGENERATION, 12000, 9), 
 					new PotionEffect(PotionEffectType.SATURATION, 12000, 9));
