@@ -115,7 +115,6 @@ public class Main extends JavaPlugin{
     	for (int i = 0; i < players.size(); i++) {
     		player = players.get(i);
     		scoreboard.getObjective("kills").getScore(player.getName()).setScore(0); 
-            scoreboard.getObjective("deaths").getScore(player.getName()).setScore(0); 
     		player.setGameMode(GameMode.SURVIVAL);
     		hgu.clearEffects(player);
     		player.getInventory().clear();
