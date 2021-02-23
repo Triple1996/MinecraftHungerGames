@@ -16,6 +16,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
@@ -129,40 +130,43 @@ public class Main extends JavaPlugin{
     	ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
     	WorldBorder border = Bukkit.getServer().getWorld("world").getWorldBorder();
     	BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
+    	Plugin plugin = this;
     	
-    	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
+    	scheduler.scheduleSyncDelayedTask(plugin, new Runnable() {
     		@Override
     		public void run() {
+    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
     			border.setSize(1750, 180); // run for 3 mins (3600 ticks)
-    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
+    			
+    			scheduler.scheduleSyncDelayedTask(plugin, new Runnable() {
+    	    		@Override
+    	    		public void run() {
+    	    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
+    	    			border.setSize(1000, 360);// run for 6 minutes (7200 ticks)
+    	    			
+    	    			scheduler.scheduleSyncDelayedTask(plugin, new Runnable() {
+    	    	    		@Override
+    	    	    		public void run() {
+    	    	    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
+    	    	    			border.setSize(15, 300);// run for 5 mins(6000 ticks)
+    	    	    			
+    	    	    			scheduler.scheduleSyncDelayedTask(plugin, new Runnable() {
+    	    	    	    		@Override
+    	    	    	    		public void run() {
+    	    	    	    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Final Round\",\"color\":\"gold\"}");
+    	    	    	    			repeatedlyMoveCenter();
+    	    	    	    		}
+    	    	    	    	}, 6000); // 5 mins wait (6000 ticks)
+    	    	    			
+    	    	    		}
+    	    	    	}, 7200+6000); // 6 mins closing, 5 mins wait(6000 ticks)
+    	    			
+    	    		}
+    	    	}, 3600+7200);	// 3 mins closing, 6 mins wait(7200 ticks)
+    			
     		}
-    	}, 2400);	// after 2 mins (2400 ticks)
-    	// 6000 total
-    	
-    	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
-    		@Override
-    		public void run() {
-    			border.setSize(1000, 360);// run for 6 minutes (7200 ticks)
-    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
-    		}
-    	}, 6000+7200);	// after 6 mins (7200 ticks)
-    	// 14,400 total
-    	
-    	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
-    		@Override
-    		public void run() {
-    			border.setSize(15, 300);// run for 5 mins(6000 ticks)
-    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
-    		}
-    	}, 6000+14400+6000); // after 5 mins(6000 ticks)
-    	// 12,000 total
-    	
-    	scheduler.scheduleSyncDelayedTask(this, new Runnable() {
-    		@Override
-    		public void run() {
-    			repeatedlyMoveCenter();
-    		}
-    	}, 6000+14400+12000);
+    	}, 2400);	// 2 mins wait(2400 ticks)
+
     }
     
     private void repeatedlyMoveCenter() {
