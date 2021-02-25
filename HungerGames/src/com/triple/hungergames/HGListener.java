@@ -44,6 +44,14 @@ public class HGListener implements Listener{
 	        hgu.welcomePlayer(console, player);;
 	        scoreboard.getObjective("kills").getScore(player.getName()).setScore(0);
 	        player.addPotionEffects(Main.starterEffects);
+	        Main.playersInGame.add(player);
+    	} else {
+    		Player player = (Player) event.getPlayer();
+    		hgu.welcomePlayer(console, player);
+    		player.setGameMode(GameMode.SPECTATOR);
+    		scoreboard.getTeam("Red").addEntry(player.getName());
+    		Bukkit.dispatchCommand(console, "title " + player.getName() + " subtitle {\"text\":\"You are now spectating.\",\"color\":\"gold\"}");
+    		Bukkit.dispatchCommand(console, "title "+ player.getName() + " title {\"text\":\"Game is in progress\",\"color\":\"gold\"}");
     	}
         
     }
@@ -57,6 +65,7 @@ public class HGListener implements Listener{
     		scoreboard.getTeam("Red").addEntry(player.getName());
     		Bukkit.dispatchCommand(console, "title " + player.getName() + " subtitle {\"text\":\"You are now spectating.\",\"color\":\"gold\"}");
     		Bukkit.dispatchCommand(console, "title "+ player.getName() + " title {\"text\":\"Wasted\",\"color\":\"dark_red\"}");
+    		Main.playersInGame.remove(Main.playersInGame.indexOf(player));
     	}
     }
     
