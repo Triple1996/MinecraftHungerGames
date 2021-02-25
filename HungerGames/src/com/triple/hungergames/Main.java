@@ -1,6 +1,7 @@
 package com.triple.hungergames;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class Main extends JavaPlugin{
 	public final static int MAX_BUILD_HEIGHT = 256;
 	private static HGUtils hgu = new HGUtils();
 	private static Boolean gameStarted = false;
-	
+	public static List<Player> playersInGame = new ArrayList<Player>();
 	@Override
     public void onEnable() {
 
