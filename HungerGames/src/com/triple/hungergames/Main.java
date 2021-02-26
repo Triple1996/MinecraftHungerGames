@@ -35,7 +35,7 @@ public class Main extends JavaPlugin{
 	public final static int MAX_BUILD_HEIGHT = 256;
 	
 	
-	public static List<Player> playersInGame = new ArrayList<Player>();
+	public static List<String> playersInGame = new ArrayList<String>();
 	
 	
 	private static HGUtils hgu = new HGUtils();

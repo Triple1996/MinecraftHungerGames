@@ -43,13 +43,13 @@ public class HGListener implements Listener{
 	        hgu.welcomePlayer(console, player);;
 	        scoreboard.getObjective("kills").getScore(player.getName()).setScore(0);
 	        player.addPotionEffects(Main.starterEffects);
-	        Main.playersInGame.add(player);
+	        Main.playersInGame.add(player.getName());
 	        
-    	} else if (!Main.playersInGame.contains(player)){
+    	} else if (!Main.playersInGame.contains(player.getName())){
     		// TODO Figure out why the above condition always resolves to false (true with the `!`)
     		player.setGameMode(GameMode.SPECTATOR);
     		scoreboard.getTeam("Red").addEntry(player.getName());
-    		hgu.displayTitle(console,  player, "Game is in progress", "gold", "You are now spectating.", "gold");
+    		hgu.displayTitle(console,  player.getName(), "Game is in progress", "gold", "You are now spectating.", "gold");
     	}
         
     }
@@ -62,16 +62,16 @@ public class HGListener implements Listener{
     		player.setGameMode(GameMode.SPECTATOR);
     		scoreboard.getTeam("Red").addEntry(player.getName());
     		
-    		hgu.displayTitle(console,  player, "Wasted", "dark_red", "You are now spectating.", "gold");
+    		hgu.displayTitle(console,  player.getName(), "Wasted", "dark_red", "You are now spectating.", "gold");
     		
     		// TODO this condition always resolves to false
-    		if (Main.playersInGame.contains(player)){
-    			Main.playersInGame.remove(Main.playersInGame.indexOf(player));
+    		if (Main.playersInGame.contains(player.getName())){
+    			Main.playersInGame.remove(Main.playersInGame.indexOf(player.getName()));
     		}
     		
     		// TODO This should work, except with the issue above, playersInGame will never decrement to 1
     		if (Main.playersInGame.size() == 1) {
-    			Player winner = Main.playersInGame.get(0);
+    			String winner = Main.playersInGame.get(0);
     			hgu.displayTitle(console, winner, "Congratulations", "green", "You are the champion!", "green");
     		}
     		
