@@ -37,21 +37,20 @@ public class HGListener implements Listener{
 
     @EventHandler
     public void OnPlayerJoin(PlayerJoinEvent event) {
-    	// TODO, implement winner screen
-    	// pseudocode: keep track of players leaving/joining before gamestart, when playercount == 1, display title to last person standing
+    	
+    	Player player = (Player) event.getPlayer();
     	if (!Main.getGameStarted()) {
-    		Player player = (Player) event.getPlayer();
 	        hgu.welcomePlayer(console, player);;
 	        scoreboard.getObjective("kills").getScore(player.getName()).setScore(0);
 	        player.addPotionEffects(Main.starterEffects);
 	        Main.playersInGame.add(player);
-    	} else {
-    		Player player = (Player) event.getPlayer();
-    		hgu.welcomePlayer(console, player);
+	        
+    	} else if (!Main.playersInGame.contains(player)){
+    		// TODO the above condition always resolves to false (true with the `!`)
+    		// Figure out why so this block will run
     		player.setGameMode(GameMode.SPECTATOR);
     		scoreboard.getTeam("Red").addEntry(player.getName());
-    		Bukkit.dispatchCommand(console, "title " + player.getName() + " subtitle {\"text\":\"You are now spectating.\",\"color\":\"gold\"}");
-    		Bukkit.dispatchCommand(console, "title "+ player.getName() + " title {\"text\":\"Game is in progress\",\"color\":\"gold\"}");
+    		hgu.displayTitle(console,  player, "Game is in progress", "gold", "You are now spectating.", "gold");
     	}
         
     }
@@ -63,9 +62,20 @@ public class HGListener implements Listener{
     		Player player = (Player) event.getEntity();
     		player.setGameMode(GameMode.SPECTATOR);
     		scoreboard.getTeam("Red").addEntry(player.getName());
-    		Bukkit.dispatchCommand(console, "title " + player.getName() + " subtitle {\"text\":\"You are now spectating.\",\"color\":\"gold\"}");
-    		Bukkit.dispatchCommand(console, "title "+ player.getName() + " title {\"text\":\"Wasted\",\"color\":\"dark_red\"}");
-    		Main.playersInGame.remove(Main.playersInGame.indexOf(player));
+    		
+    		hgu.displayTitle(console,  player, "Wasted", "dark_red", "You are now spectating.", "gold");
+    		
+    		// TODO this condition always resolves to false
+    		if (Main.playersInGame.contains(player)){
+    			Main.playersInGame.remove(Main.playersInGame.indexOf(player));
+    		}
+    		
+    		// TODO This should work, except with the issue above, playersInGame will never decrement to 1
+    		if (Main.playersInGame.size() == 1) {
+    			Player winner = Main.playersInGame.get(0);
+    			hgu.displayTitle(console, winner, "Congratulations", "green", "You are the champion!", "green");
+    		}
+    		
     	}
     }
     
