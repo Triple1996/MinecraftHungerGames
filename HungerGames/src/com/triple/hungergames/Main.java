@@ -35,9 +35,7 @@ public class Main extends JavaPlugin{
 	public final static int MAX_BUILD_HEIGHT = 256;
 	
 	
-	public static List<String> playersInGame = new ArrayList<String>();
-	
-	
+	private static List<String> playersInGame = new ArrayList<String>();
 	private static HGUtils hgu = new HGUtils();
 	private static Boolean gameStarted = false;
 	
@@ -59,8 +57,29 @@ public class Main extends JavaPlugin{
     	gameStarted = bool;
     }
     
-    public  static Boolean getGameStarted() {
+    public static Boolean getGameStarted() {
     	return gameStarted;
+    }
+    
+    public static void addPlayerToGame(String player) {
+    	playersInGame.add(player);
+    }
+    
+    public static void removePlayerFromGame(String player) {
+    	if (playersInGame.contains(player)){
+			playersInGame.remove(playersInGame.indexOf(player));
+		}
+    }
+    
+    public static Boolean playerInGame(String player) {
+    	return Main.playersInGame.contains(player);
+    }
+    
+    public static String getPlayerFromList(int index) {
+    	return playersInGame.get(index);
+    }
+    public static int playersInGame() {
+    	return playersInGame.size();
     }
     
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -89,7 +108,7 @@ public class Main extends JavaPlugin{
             	
             	prepGame(world, xCenter, zCenter);
             	startGame();
-            	// TODO when teams are set up, change option to "true", so teams stay together
+
             	Bukkit.dispatchCommand(console, "spreadplayers " + xCenter + " " + zCenter + " 300 900 false @a");
 
             	return true;

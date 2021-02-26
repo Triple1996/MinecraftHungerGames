@@ -43,9 +43,9 @@ public class HGListener implements Listener{
 	        hgu.welcomePlayer(console, player);;
 	        scoreboard.getObjective("kills").getScore(player.getName()).setScore(0);
 	        player.addPotionEffects(Main.starterEffects);
-	        Main.playersInGame.add(player.getName());
+	        Main.addPlayerToGame(player.getName());
 	        
-    	} else if (!Main.playersInGame.contains(player.getName())){
+    	} else if (!Main.playerInGame(player.getName())){
     		
     		player.setGameMode(GameMode.SPECTATOR);
     		scoreboard.getTeam("Red").addEntry(player.getName());
@@ -64,13 +64,11 @@ public class HGListener implements Listener{
     		
     		hgu.displayTitle(console,  player.getName(), "Wasted", "dark_red", "You are now spectating.", "gold");
     		
-    		if (Main.playersInGame.contains(player.getName())){
-    			Main.playersInGame.remove(Main.playersInGame.indexOf(player.getName()));
-    		}
+    		Main.removePlayerFromGame(player.getName());
     		
     		// TODO This should work, needs to be tested
-    		if (Main.playersInGame.size() == 1) {
-    			String winner = Main.playersInGame.get(0);
+    		if (Main.playersInGame() == 1) {
+    			String winner = Main.getPlayerFromList(0);
     			hgu.displayTitle(console, winner, "Congratulations", "green", "You are the champion!", "green");
     		}
     		
