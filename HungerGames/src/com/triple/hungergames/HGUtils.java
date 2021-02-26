@@ -32,6 +32,10 @@ public class HGUtils {
 		Bukkit.dispatchCommand(console, "title "+ playerName + " title {\"text\":\"" + title + "\",\"color\":\"" + tColor + "\"}");
 	}
 	
+	public void displayTitle(ConsoleCommandSender console, String playerName, String title, String tColor) {
+		Bukkit.dispatchCommand(console, "title "+ playerName + " title {\"text\":\"" + title + "\",\"color\":\"" + tColor + "\"}");
+	}
+	
 	public void welcomePlayer(ConsoleCommandSender console, Player player) {
 
 		player.spigot().sendMessage(
