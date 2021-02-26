@@ -160,25 +160,25 @@ public class Main extends JavaPlugin{
     	scheduler.scheduleSyncDelayedTask(plugin, new Runnable() {
     		@Override
     		public void run() {
-    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
+    			hgu.displayTitle(console,  "@a", "Ring closing", "gold");
     			border.setSize(1750, 180); // run for 3 mins (3600 ticks)
     			
     			scheduler.scheduleSyncDelayedTask(plugin, new Runnable() {
     	    		@Override
     	    		public void run() {
-    	    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
+    	    			hgu.displayTitle(console,  "@a", "Ring closing", "gold");
     	    			border.setSize(1000, 360);// run for 6 minutes (7200 ticks)
     	    			
     	    			scheduler.scheduleSyncDelayedTask(plugin, new Runnable() {
     	    	    		@Override
     	    	    		public void run() {
-    	    	    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Ring closing\",\"color\":\"gold\"}");
+    	    	    			hgu.displayTitle(console,  "@a", "Ring closing", "gold");
     	    	    			border.setSize(15, 300);// run for 5 mins(6000 ticks)
     	    	    			
     	    	    			scheduler.scheduleSyncDelayedTask(plugin, new Runnable() {
     	    	    	    		@Override
     	    	    	    		public void run() {
-    	    	    	    			Bukkit.dispatchCommand(console, "title @a title {\"text\":\"Final Round\",\"color\":\"gold\"}");
+    	    	    	    			hgu.displayTitle(console,  "@a", "Final Round", "gold");
     	    	    	    			repeatedlyMoveCenter();
     	    	    	    		}
     	    	    	    	}, 6000); // 5 mins closing(6000 ticks)
