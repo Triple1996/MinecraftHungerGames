@@ -25,6 +25,12 @@ public class HGUtils {
 		}
 	}
 	
+	public void displayTitle(ConsoleCommandSender console, Player player, String title, String tColor, String sub, String sColor) {
+		Bukkit.dispatchCommand(console, "title " + player.getName() + " subtitle {\"text\":\"" + sub + "\",\"color\":\"" + sColor + "\"}");
+		Bukkit.dispatchCommand(console, "title "+ player.getName() + " title {\"text\":\"" + title + "\",\"color\":\"" + tColor + "\"}");
+		
+	}
+	
 	public void welcomePlayer(ConsoleCommandSender console, Player player) {
 		String msg = " {\"text\":\"Welcome to Minecraft Hunger Games!\",\"color\":\"yellow\"}";
 		Bukkit.dispatchCommand(console, "tellraw " + player.getName() + msg);
