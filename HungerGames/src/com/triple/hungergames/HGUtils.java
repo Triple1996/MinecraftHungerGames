@@ -16,6 +16,8 @@ import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.RenderType;
 import org.bukkit.scoreboard.Scoreboard;
 
+import net.md_5.bungee.api.chat.ComponentBuilder;
+
 public class HGUtils {
 	
 	public void clearEffects(Player player) {
@@ -32,15 +34,19 @@ public class HGUtils {
 	}
 	
 	public void welcomePlayer(ConsoleCommandSender console, Player player) {
-		String msg = " {\"text\":\"Welcome to Minecraft Hunger Games!\",\"color\":\"yellow\"}";
-		Bukkit.dispatchCommand(console, "tellraw " + player.getName() + msg);
-		
-		msg = " {\"text\":\"Your objective is simply to eliminate the other teams.\",\"color\":\"yellow\"}";
-		Bukkit.dispatchCommand(console, "tellraw " + player.getName() + msg);
-		
-		msg = " {\"text\":\"Please be patient while the game is about to begin.\",\"color\":\"yellow\"}";
-		Bukkit.dispatchCommand(console, "tellraw " + player.getName() + msg);
-		
+
+		player.spigot().sendMessage(
+				new ComponentBuilder("Welcome to Minecraft Hunger Games!")
+				.color(net.md_5.bungee.api.ChatColor.YELLOW)
+				.create());
+		player.spigot().sendMessage(
+				new ComponentBuilder("Your objective is simply to eliminate the other teams.")
+				.color(net.md_5.bungee.api.ChatColor.YELLOW)
+				.create());
+		player.spigot().sendMessage(
+				new ComponentBuilder("Please be patient while the game is about to begin.")
+				.color(net.md_5.bungee.api.ChatColor.YELLOW)
+				.create());
 	}
 
 	public void initSpawnArea(ConsoleCommandSender console, World world) {
