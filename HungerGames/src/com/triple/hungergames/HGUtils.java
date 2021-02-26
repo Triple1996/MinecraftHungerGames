@@ -27,10 +27,9 @@ public class HGUtils {
 		}
 	}
 	
-	public void displayTitle(ConsoleCommandSender console, Player player, String title, String tColor, String sub, String sColor) {
-		Bukkit.dispatchCommand(console, "title " + player.getName() + " subtitle {\"text\":\"" + sub + "\",\"color\":\"" + sColor + "\"}");
-		Bukkit.dispatchCommand(console, "title "+ player.getName() + " title {\"text\":\"" + title + "\",\"color\":\"" + tColor + "\"}");
-		
+	public void displayTitle(ConsoleCommandSender console, String playerName, String title, String tColor, String subtitle, String sColor) {
+		Bukkit.dispatchCommand(console, "title " + playerName + " subtitle {\"text\":\"" + subtitle + "\",\"color\":\"" + sColor + "\"}");
+		Bukkit.dispatchCommand(console, "title "+ playerName + " title {\"text\":\"" + title + "\",\"color\":\"" + tColor + "\"}");
 	}
 	
 	public void welcomePlayer(ConsoleCommandSender console, Player player) {
