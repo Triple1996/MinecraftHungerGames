@@ -46,8 +46,7 @@ public class HGListener implements Listener{
 	        Main.playersInGame.add(player);
 	        
     	} else if (!Main.playersInGame.contains(player)){
-    		// TODO the above condition always resolves to false (true with the `!`)
-    		// Figure out why so this block will run
+    		// TODO Figure out why the above condition always resolves to false (true with the `!`)
     		player.setGameMode(GameMode.SPECTATOR);
     		scoreboard.getTeam("Red").addEntry(player.getName());
     		hgu.displayTitle(console,  player, "Game is in progress", "gold", "You are now spectating.", "gold");
