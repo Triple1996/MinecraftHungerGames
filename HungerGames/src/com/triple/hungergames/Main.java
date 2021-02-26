@@ -33,9 +33,14 @@ public class Main extends JavaPlugin{
 					new PotionEffect(PotionEffectType.SATURATION, 12000, 9));
 
 	public final static int MAX_BUILD_HEIGHT = 256;
+	
+	
+	public static List<Player> playersInGame = new ArrayList<Player>();
+	
+	
 	private static HGUtils hgu = new HGUtils();
 	private static Boolean gameStarted = false;
-	public static List<Player> playersInGame = new ArrayList<Player>();
+	
 	@Override
     public void onEnable() {
 
