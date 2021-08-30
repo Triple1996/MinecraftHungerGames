@@ -13,7 +13,7 @@ For use with Minecraft Spigot Server 1.17.1
 
 1. Clone this repository    
 2. Create a new Java workspace and open the `HungerGames` root folder as an existing project.    
-3. You need to configure the build path to use `spigot-1.16.5.jar` as an external archive.    
+3. You need to configure the build path to use `spigot-1.17.1.jar` as an external archive.    
     a) The exact file name may be different depending on the latest version, but it will always be something like "spigot-x.x.x.jar"    
 
 # To Run The Server  
