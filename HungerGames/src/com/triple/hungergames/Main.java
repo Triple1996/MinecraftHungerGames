@@ -85,42 +85,48 @@ public class Main extends JavaPlugin{
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         Player playerSender = (Player) sender;
-
+        
+    	if (args.length > 0) {
+    		hgu.tellConsole(Bukkit.getServer().getConsoleSender(), "Command receieved with parameters");
+    	}
+    	else {
+    		hgu.tellConsole(Bukkit.getServer().getConsoleSender(), "Command receieved without parameters");
+    	}
+    	
         if (sender instanceof Player) {
 
             String lowerCmd = cmd.getName().toLowerCase();
 
             switch (lowerCmd) {
-            
-            case "start-2000":
-            	setGameStarted(true);
-            	
-                ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-            	World world = Bukkit.getServer().getWorld("world");
-            	
-
-            	int xCenter = (int) ((Math.random() * 401) - 200);
-            	int zCenter = (int) ((Math.random() * 401) - 200);
-            	
-            	world.getWorldBorder().setCenter(xCenter, zCenter);
-            	world.getWorldBorder().setSize(2000);		
-            	world.getWorldBorder().setWarningDistance(100);
-            	
-            	prepGame(world, xCenter, zCenter);
-            	startGame();
-
-            	Bukkit.dispatchCommand(console, "spreadplayers " + xCenter + " " + zCenter + " 300 900 false @a");
-
-            	return true;
-
-            case "welcome":
-            	playerSender.sendMessage("Welcome " + playerSender.getName());
-            	return true;
-
-            default:
-
-            	playerSender.sendMessage("Your command was not recognized.");
-                return true;
+	            
+	            case "start-2000":	            	
+	            	setGameStarted(true);
+	            	
+	                ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+	            	World world = Bukkit.getServer().getWorld("world");
+	            		            	
+	            	int xCenter = (int) ((Math.random() * 401) - 200);	//generate number in range [-200, 200]
+	            	int zCenter = (int) ((Math.random() * 401) - 200);	//generate number in range [-200, 200]
+	            	
+	            	world.getWorldBorder().setCenter(xCenter, zCenter);
+	            	world.getWorldBorder().setSize(2000);
+	            	world.getWorldBorder().setWarningDistance(100);
+	            	
+	            	prepGame(world, xCenter, zCenter);
+	            	startGame();
+	
+	            	Bukkit.dispatchCommand(console, "spreadplayers " + xCenter + " " + zCenter + " 300 900 false @a");
+	
+	            	return true;
+	
+	            case "welcome":
+	            	playerSender.sendMessage("Welcome " + playerSender.getName());
+	            	return true;
+	
+	            default:
+	
+	            	playerSender.sendMessage("Your command was not recognized.");
+	                return true;
             }
         }
         playerSender.sendMessage("Somehow you aren't a player.");
