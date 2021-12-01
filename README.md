@@ -18,7 +18,7 @@
 
 # To Run The Server  
 1. Create a new directory for your server. Inside it, you must have a COPY of the `spigot-X.XX.X.jar` JAR file      
-2. Create a file `start.sh` to start your server with the command `java -Xms#G -Xmx#G -XX:+UseG1GC -jar spigot-X.XX.X.jar nogui`
+2. Create a file `start.sh` to start your server with the command `java -Xms#G -Xmx#G -XX:+UseG1GC -jar spigot-X.XX.X.jar nogui` 
     a) Change the `#` to however much memory you wish to allocate to the server  
     b) Change the name of `spigot-X.XX.X.jar` to the latest version of spigot
   
