@@ -1,4 +1,4 @@
-For use with Minecraft Spigot Server 1.17.1
+# Last updated for Spigot 1.17.1
 
 # Spigot Development Setup
 
@@ -6,21 +6,21 @@ For use with Minecraft Spigot Server 1.17.1
   https://www.minecraft.net/en-us/download  
 2. Install Spigot Server  
   https://www.spigotmc.org/wiki/spigot-installation/#linux  
-3. Install BuildTools and run to build spigot.jar  
+3. Install BuildTools and run to build `spigot-X.XX.X.jar` (where `X.XX.X` is the latest version, for instance `spigot-1.17.1.jar`)
   https://www.spigotmc.org/wiki/buildtools/ 
   
 # Linux Install Instructions
 
 1. Clone this repository    
 2. Create a new Java workspace and open the `HungerGames` root folder as an existing project.    
-3. You need to configure the build path to use `spigot-1.17.1.jar` as an external archive.    
-    a) The exact file name may be different depending on the latest version, but it will always be something like "spigot-x.x.x.jar"    
+3. You need to configure the build path to use `spigot-X.XX.X.jar` as an external archive.    
+    a) The exact file name may be different depending on the latest version, but it will always be something like "spigot-X.XX.X.jar"    
 
 # To Run The Server  
-1. Create a new directory for your server. Inside it, you must have a COPY of the `spigot-1.17.1.jar` JAR file      
-2. Create a file `start.sh` to start your server with the command `java -Xms#G -Xmx#G -XX:+UseG1GC -jar spigot-1.17.1.jar nogui`    
+1. Create a new directory for your server. Inside it, you must have a COPY of the `spigot-X.XX.X.jar` JAR file      
+2. Create a file `start.sh` to start your server with the command `java -Xms#G -Xmx#G -XX:+UseG1GC -jar spigot-X.XX.X.jar nogui`
     a) Change the `#` to however much memory you wish to allocate to the server  
-    b) Check the name of the `spigot-1.17.1.jar` file - it may be different depending on the latest version
+    b) Change the name of `spigot-X.XX.X.jar` to the latest version of spigot
   
 3. Inside the server directory you must create another directory named `plugins`    
 4. Export from your workspace the project's `plugin.yml` as a .JAR file into the `plugins` directory
